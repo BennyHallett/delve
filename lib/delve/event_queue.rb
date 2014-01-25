@@ -17,7 +17,8 @@ class EventQueue
 
   def get
     return nil unless @events.length > 0
+    
     @time += @events.first[:time]
-    @events.first
+    @events.first[:event]
   end
 end
