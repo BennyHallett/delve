@@ -9,6 +9,7 @@ Gem::Specification.new do |g|
   g.homepage    = 'http://bennyhallett.com/delve'
   g.license    = 'BSD'
   g.add_development_dependency('rake')
+  g.add_development_dependency('minitest')
   g.add_development_dependency('mocha')
-  g.add_runtime_dependency('curses')
+  #g.add_runtime_dependency('curses')
 end
