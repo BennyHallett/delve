@@ -11,4 +11,8 @@ class EventQueue
     raise 'Unable to add a nil event' unless event
     raise 'Unable to schedule event with no time' unless time
   end
+
+  def get
+    return nil
+  end
 end
