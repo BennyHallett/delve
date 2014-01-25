@@ -1,6 +1,7 @@
 class EventQueue
   def initialize
     @time = 0
+    @events = Array.new
   end
 
   def time
@@ -10,9 +11,12 @@ class EventQueue
   def add(event, time)
     raise 'Unable to add a nil event' unless event
     raise 'Unable to schedule event with no time' unless time
+    
+    @events << { :event => event, :time => time }
   end
 
   def get
-    return nil
+    return nil unless @events.length > 0
+    @events.first
   end
 end

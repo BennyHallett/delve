@@ -32,6 +32,14 @@ class EventQueueTest < Minitest::Test
     assert_nil event
   end
 
+  def test_add_event_and_get_it_returns_same_event
+    @queue.add @event, 1
+    event = @queue.get
+    
+    assert_equal 1, event[:time]
+    assert_equal @event, event[:event]
+  end
+
   # fail if added event before current time?
 
 end
