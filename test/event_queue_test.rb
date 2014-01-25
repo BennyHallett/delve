@@ -40,6 +40,11 @@ class EventQueueTest < Minitest::Test
     assert_equal @event, event[:event]
   end
 
-  # fail if added event before current time?
+  def test_add_event_and_get_it_advances_time
+    @queue.add @event, 10
+    @queue.get
+
+    assert_equal 10, @queue.time
+  end
 
 end
