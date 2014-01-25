@@ -47,9 +47,10 @@ class EventQueueTest < Minitest::Test
   end
 
   def test_add_two_events_out_of_sequence_and_get_them
-    second_event = mock('object')
-    @queue.add @event, 10
-    @queue.add second_event, 5
+    first_event = { :place => 1 }
+    second_event = { :place => 2 }
+    @queue.add second_event, 10
+    @queue.add first_event, 5
 
     first = @queue.get
     assert_equal 5, @queue.time
@@ -57,7 +58,7 @@ class EventQueueTest < Minitest::Test
     second = @queue.get
     assert_equal 10, @queue.time    
 
-    assert_equal @event, first
+    assert_equal first_event, first
     assert_equal second_event, second
   end
 
