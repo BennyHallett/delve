@@ -10,5 +10,5 @@ Gem::Specification.new do |g|
   g.license    = 'BSD'
   g.add_development_dependency('rake')
   g.add_development_dependency('mocha')
-  #s.add_runtime_dependency('gli','2.8.1')
+  g.add_runtime_dependency('curses')
 end
