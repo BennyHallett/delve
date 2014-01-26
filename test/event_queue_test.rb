@@ -1,13 +1,12 @@
 require 'minitest'
 require 'minitest/autorun'
-require 'mocha/setup'
 require 'delve/event_queue'
 
 class EventQueueTest < Minitest::Test
 
   def setup
     @queue = EventQueue.new
-    @event = mock('object')
+    @event = { :name => 'test-event' }
   end
 
   def test_initial_time_is_zero
@@ -65,6 +64,13 @@ class EventQueueTest < Minitest::Test
   def test_remove_event_that_doesnt_exist_returns_false
     result = @queue.remove({:event => 'fight'})
     assert_equal false, result
+  end
+
+  def test_remove_event_that_actually_exists
+    @queue.add @event, 4
+    result = @queue.remove @event
+
+    assert result
   end
 
 end

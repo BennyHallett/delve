@@ -36,6 +36,9 @@ class EventQueue
   end
 
   def remove(event)
-    return false
+    index = @events.index { |e| e[:event] == event }
+    return false unless index
+    @events.delete_at index
+    true
   end
 end
