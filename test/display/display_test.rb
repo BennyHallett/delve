@@ -44,5 +44,10 @@ class DisplayTests < MiniTest::Test
     assert_equal :yellow, opts[:foreground]
     assert_equal :gray, opts[:background]
   end
-  
+ 
+  def test_not_initially_dirty_so_no_rendering_is_done
+    @display.render
+    # If it was dirty, then the renderer would be called, and the mock would report an error
+  end
+ 
 end

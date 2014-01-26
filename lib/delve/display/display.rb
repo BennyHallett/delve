@@ -4,6 +4,8 @@ class Display
     raise 'Cannot initialize display with no renderer' unless renderer
    
     @renderer = renderer
+    @dirty = false
+    @render_data = Hash.new
  
     default_options = {
       :width        => 80,
@@ -18,6 +20,10 @@ class Display
 
   def options
     return @options
+  end
+
+  def render
+    @renderer.render @render_data if @dirty
   end
 
 end
