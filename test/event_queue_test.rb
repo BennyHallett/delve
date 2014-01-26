@@ -62,4 +62,9 @@ class EventQueueTest < Minitest::Test
     assert_equal second_event, second
   end
 
+  def test_remove_event_that_doesnt_exist_returns_false
+    result = @queue.remove({:event => 'fight'})
+    assert_equal false, result
+  end
+
 end

@@ -34,4 +34,8 @@ class EventQueue
     end
     e[:event]
   end
+
+  def remove(event)
+    return false
+  end
 end
