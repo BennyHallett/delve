@@ -16,4 +16,13 @@ class DisplayTests < MiniTest::Test
     end
   end
 
+  def test_create_display_with_no_options_sets_defaults
+    opts = @display.options
+
+    assert_equal 80, opts[:width]
+    assert_equal 24, opts[:height]
+    assert_equal :white, opts[:foreground]
+    assert_equal :black, opts[:background]
+  end
+
 end
