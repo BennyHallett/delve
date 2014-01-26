@@ -56,5 +56,12 @@ class DisplayTests < MiniTest::Test
     @renderer.expects(:render).with({ '1,1' => { :x => 1, :y => 1, :char => '@', :foreground => :white, :background => :black } })
     @display.render
   end
+
+  def test_draw_with_colors
+    @display.draw 1, 1, '@', :red, :gray
+    
+    @renderer.expects(:render).with({ '1,1' => { :x => 1, :y => 1, :char => '@', :foreground => :red, :background => :gray} })
+    @display.render
+  end
  
 end
