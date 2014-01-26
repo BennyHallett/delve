@@ -73,4 +73,14 @@ class EventQueueTest < Minitest::Test
     assert result
   end
 
+  def test_get_after_clear_returns_nil
+    @queue.add @event, 5
+    @queue.add @event, 8
+    @queue.clear
+
+    event = @queue.get
+    
+    assert_nil event
+  end
+
 end

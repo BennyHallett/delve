@@ -41,4 +41,8 @@ class EventQueue
     @events.delete_at index
     true
   end
+
+  def clear
+    @events = Array.new
+  end
 end
