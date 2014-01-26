@@ -18,6 +18,13 @@ class Display
     @options = default_options
   end
 
+  def draw(x, y, char, foreground=nil, background=nil)
+    fg = foreground || @options[:foreground]
+    bg = background || @options[:background]
+    @render_data["#{x},#{y}"] = { :x => x, :y => y, :char => char, :foreground => fg, :background => bg }
+    @dirty = true
+  end
+
   def options
     return @options
   end

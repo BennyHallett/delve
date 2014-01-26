@@ -49,5 +49,12 @@ class DisplayTests < MiniTest::Test
     @display.render
     # If it was dirty, then the renderer would be called, and the mock would report an error
   end
+
+  def test_draw_with_no_colors_uses_default
+    @display.draw 1, 1, '@'
+    
+    @renderer.expects(:render).with({ '1,1' => { :x => 1, :y => 1, :char => '@', :foreground => :white, :background => :black } })
+    @display.render
+  end
  
 end
