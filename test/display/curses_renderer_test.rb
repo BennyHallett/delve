@@ -15,4 +15,9 @@ class CursesRendererTests < Minitest::Test
     @renderer.init
   end
 
+  def test_exit_calls_curses_close
+    Curses.expects(:close_screen)
+    @renderer.exit
+  end
+
 end
