@@ -13,13 +13,17 @@ class CursesRenderer
     Curses.close_screen
   end
 
+  def render(data)
+    data.keys.each do |key|
+      draw_data = data[key]
+      draw(draw_data[:x], draw_data[:y], draw_data[:char], draw_data[:foreground], draw_data[:background])
+    end   
+    Curses.refresh
+  end
+
   def draw(x, y, char, fg, bg)
     Curses.setpos(x, y)
     Curses.addstr(char)
-  end
-
-  def render
-    Curses.refresh
   end
 
 end
