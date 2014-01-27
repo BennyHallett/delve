@@ -7,7 +7,6 @@ class CursesRenderer
     Curses.start_color
     Curses.nl
     Curses.noecho
-    Curses.init_pair(Curses::COLOR_WHITE, Curses::COLOR_WHITE, Curses::COLOR_BLACK)
   end
 
   def exit
@@ -15,11 +14,8 @@ class CursesRenderer
   end
 
   def draw(x, y, char, fg, bg)
-    Curses.clear
     Curses.setpos(x, y)
-    Curses.attron(Curses.color_pair(Curses::COLOR_WHITE)) do
-      Curses.addstr(char)
-    end
+    Curses.addstr(char)
   end
 
   def render

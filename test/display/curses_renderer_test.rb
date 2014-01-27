@@ -24,7 +24,6 @@ class CursesRendererTests < Minitest::Test
 
   def test_draw
     Curses.expects(:setpos)
-    Curses.expects(:attron)
     Curses.expects(:addstr)
     Curses.expects(:init_screen)
     Curses.expects(:nl)
@@ -37,7 +36,6 @@ class CursesRendererTests < Minitest::Test
   def test_render
     Curses.expects(:refresh)
     Curses.expects(:setpos)
-    Curses.expects(:attron)
     Curses.expects(:addstr)
     Curses.expects(:init_screen)
     Curses.expects(:nl)
