@@ -68,4 +68,9 @@ class DisplayTests < MiniTest::Test
     @renderer.expects(:render).with({ '1,1' => { :x => 1, :y => 1, :char => '@', :foreground => :red, :background => :gray} })
     @display.render
   end
+
+  def test_display_exit_defers_to_renderer
+    @renderer.expects(:exit)
+    @display.exit
+  end
 end

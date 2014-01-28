@@ -34,4 +34,8 @@ class Display
     @renderer.render @render_data if @dirty
   end
 
+  def exit
+    @renderer.exit
+  end
+
 end

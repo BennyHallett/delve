@@ -1,8 +1,7 @@
 require 'delve/display/display'
 require 'delve/display/curses_renderer'
 
-renderer = CursesRenderer.new
-display = Display.new renderer
+display = Display.new CursesRenderer.new
 
 display.draw(2, 2, '@')
 display.draw(4, 6, 'x')
@@ -16,4 +15,4 @@ display.render
 
 sleep 2
 
-renderer.exit
+display.exit
