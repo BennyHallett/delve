@@ -7,6 +7,7 @@ class DisplayTests < MiniTest::Test
 
   def setup
     @renderer = mock('object')
+    @renderer.expects(:init)
     @display = Display.new @renderer
   end
 
@@ -26,7 +27,9 @@ class DisplayTests < MiniTest::Test
   end
 
   def test_partially_setting_options_keeps_changes_and_defults
-    @display = Display.new(@renderer, { :height => 36, :width => 120 })
+    renderer = mock('object')
+    renderer.expects(:init)
+    @display = Display.new(renderer, { :height => 36, :width => 120 })
     opts = @display.options
 
     assert_equal 120, opts[:width]
@@ -36,7 +39,9 @@ class DisplayTests < MiniTest::Test
   end
 
   def test_completely_define_options
-    @display = Display.new(@renderer, { :height => 36, :width => 120, :background => :gray, :foreground => :yellow })
+    renderer = mock('object')
+    renderer.expects(:init)
+    @display = Display.new(renderer, { :height => 36, :width => 120, :background => :gray, :foreground => :yellow })
     opts = @display.options
 
     assert_equal 120, opts[:width]
@@ -63,5 +68,4 @@ class DisplayTests < MiniTest::Test
     @renderer.expects(:render).with({ '1,1' => { :x => 1, :y => 1, :char => '@', :foreground => :red, :background => :gray} })
     @display.render
   end
- 
 end

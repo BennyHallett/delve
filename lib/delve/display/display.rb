@@ -16,6 +16,7 @@ class Display
 
     options.keys.each { |k| default_options[k] = options[k] }
     @options = default_options
+    @renderer.init
   end
 
   def draw(x, y, char, foreground=nil, background=nil)
