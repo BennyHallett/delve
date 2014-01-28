@@ -38,6 +38,7 @@ class CursesRendererTests < Minitest::Test
     Curses.expects(:init_screen)
     Curses.expects(:nl)
     Curses.expects(:noecho)
+    Curses.expects(:clear)
     @renderer.expects(:draw).with(2, 2, '@', :white, :black)
     @renderer.init
     @renderer.render({ '1,1' => {:x => 2, :y => 2, :char => '@', :foreground => :white, :background => :black} })

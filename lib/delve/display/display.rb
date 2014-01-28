@@ -31,7 +31,10 @@ class Display
   end
 
   def render
-    @renderer.render @render_data if @dirty
+    if @dirty
+      @renderer.render @render_data
+      @render_data = Hash.new
+    end
   end
 
   def exit
