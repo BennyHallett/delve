@@ -7,6 +7,7 @@ class ScreenManagerTest < Minitest::Test
   def setup
     @manager = ScreenManager.new
     @screen = mock('object')
+    @display = mock('object')
   end
 
   def test_empty_is_true_initially
@@ -32,5 +33,24 @@ class ScreenManagerTest < Minitest::Test
     @manager.push_screen first_screen
     @manager.push_screen @screen
     @manager.handle_key 'a'
+  end
+
+  def test_send_events_with_no_screen_should_fail
+    assert_raises RuntimeError do
+      @manager.handle_key 'x'
+    end
+  end
+
+  def test_cannot_render_with_no_screen
+    assert_raises RuntimeError do
+      @manager.render @display
+    end
+  end
+
+  def test_error_raised_when_display_is_nil
+      @manager.push_screen @screen
+    assert_raises RuntimeError do
+      @manager.render nil
+    end
   end
 end
