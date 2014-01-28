@@ -2,7 +2,6 @@ require 'delve/display/display'
 require 'delve/display/curses_renderer'
 
 renderer = CursesRenderer.new
-renderer.init
 display = Display.new renderer
 
 display.draw(2, 2, '@')
