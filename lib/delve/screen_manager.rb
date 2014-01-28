@@ -10,4 +10,8 @@ class ScreenManager
   def push_screen(screen)
     @screen_stack.push screen
   end
+
+  def pop_screen
+    @screen_stack.pop
+  end
 end

@@ -17,4 +17,10 @@ class ScreenManagerTest < Minitest::Test
     @manager.push_screen @screen
     assert !@manager.empty?
   end
+
+  def test_push_pop_first_screen
+    @manager.push_screen @screen
+    @manager.pop_screen
+    assert @manager.empty?
+  end
 end
