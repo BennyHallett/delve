@@ -6,4 +6,8 @@ class ScreenManager
   def empty?
     @screen_stack.empty?
   end
+
+  def push_screen(screen)
+    @screen_stack.push screen
+  end
 end
