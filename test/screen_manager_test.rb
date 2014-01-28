@@ -53,4 +53,14 @@ class ScreenManagerTest < Minitest::Test
       @manager.render nil
     end
   end
+
+  def test_top_screen_is_rendered
+    @screen.expects(:render).with(@display)
+    first_screen = mock('object')
+    first_screen.expects(:render).never
+
+    @manager.push_screen first_screen
+    @manager.push_screen @screen
+    @manager.render @display
+  end
 end

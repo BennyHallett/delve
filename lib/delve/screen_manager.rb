@@ -23,5 +23,6 @@ class ScreenManager
   def render(display)
     raise 'Cannot render when no screens are present' if empty?
     raise 'Cannot render when display is nil' unless display
+    @screen_stack.last.render(display)
   end
 end
