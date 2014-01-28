@@ -14,4 +14,8 @@ class ScreenManager
   def pop_screen
     @screen_stack.pop
   end
+
+  def handle_key(key)
+    @screen_stack.last.handle_key(key)
+  end
 end
