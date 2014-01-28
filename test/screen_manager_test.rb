@@ -56,10 +56,27 @@ class ScreenManagerTest < Minitest::Test
 
   def test_top_screen_is_rendered
     @screen.expects(:render).with(@display)
+    @screen.expects(:partial?).returns(false)
     first_screen = mock('object')
     first_screen.expects(:render).never
 
     @manager.push_screen first_screen
+    @manager.push_screen @screen
+    @manager.render @display
+  end
+
+  def test_partial_screen_rendering
+    @screen.expects(:render).with(@display)
+    @screen.expects(:partial?).returns(true)
+    first_screen = mock('object')
+    first_screen.expects(:render).never
+    first_screen.expects(:partial?).never
+    second_screen = mock('object')
+    second_screen.expects(:render).with(@display)
+    second_screen.expects(:partial?).returns(false)
+
+    @manager.push_screen first_screen
+    @manager.push_screen second_screen
     @manager.push_screen @screen
     @manager.render @display
   end
