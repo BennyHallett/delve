@@ -13,7 +13,8 @@ Rake::TestTask.new do |t|
   t.test_files = FileList[
     'test/*_test.rb',
     'test/scheduler/*_test.rb',
-    'test/display/*_test.rb'
+    'test/display/*_test.rb',
+    'test/widgets/*_test.rb'
   ]
 end
 
