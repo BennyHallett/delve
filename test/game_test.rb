@@ -22,4 +22,11 @@ class GameTest < Minitest::Test
     end
   end
 
+  def test_cannot_start_when_screen_manager_is_empty
+    @screen_manager.expects(:empty?).returns(true)
+    assert_raises RuntimeError do
+      @game.start
+    end
+  end
+
 end

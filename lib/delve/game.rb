@@ -6,4 +6,8 @@ class Game
     @screen_manager = screen_manager
   end
 
+  def start
+    raise 'Unable to start game when screen_manager is empty' if @screen_manager.empty?
+  end
+
 end
