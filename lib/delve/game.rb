@@ -8,6 +8,11 @@ class Game
 
   def start
     raise 'Unable to start game when screen_manager is empty' if @screen_manager.empty?
+    quit = false
+    while !quit
+      @screen_manager.render @display
+      quit = @screen_manager.update
+    end
   end
 
 end
