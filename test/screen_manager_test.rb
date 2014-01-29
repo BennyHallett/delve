@@ -26,18 +26,18 @@ class ScreenManagerTest < Minitest::Test
   end
 
   def test_send_events_to_top_screen
-    @screen.expects(:handle_key)
+    @screen.expects(:update)
     first_screen = mock('object')
-    first_screen.expects(:handle_key).never
+    first_screen.expects(:update).never
 
     @manager.push_screen first_screen
     @manager.push_screen @screen
-    @manager.handle_key 'a'
+    @manager.update
   end
 
   def test_send_events_with_no_screen_should_fail
     assert_raises RuntimeError do
-      @manager.handle_key 'x'
+      @manager.update
     end
   end
 

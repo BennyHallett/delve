@@ -15,9 +15,9 @@ class ScreenManager
     @screen_stack.pop
   end
 
-  def handle_key(key)
+  def update
     raise 'Cannot handle key when no screens are present' if empty?
-    @screen_stack.last.handle_key(key)
+    @screen_stack.last.update
   end
 
   def render(display)
