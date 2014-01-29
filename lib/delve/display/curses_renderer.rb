@@ -23,7 +23,8 @@ class CursesRenderer
   end
 
   def draw(x, y, char, fg, bg)
-    Curses.setpos(x, y)
+    # Seem to need to flip x and y
+    Curses.setpos(y, x)
     Curses.addstr(char)
   end
 

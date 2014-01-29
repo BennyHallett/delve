@@ -1,8 +1,11 @@
 require 'delve/display/display'
 require 'delve/display/curses_renderer'
+require 'delve/widgets/text'
 
+title = TextWidget.new 0, 0, 'Press a character key to continue'
 display = Display.new CursesRenderer.new
 
+title.draw display
 display.draw(2, 2, '@')
 display.draw(4, 6, 'x')
 display.render
