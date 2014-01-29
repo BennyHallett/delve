@@ -27,4 +27,8 @@ class CursesRenderer
     Curses.addstr(char)
   end
 
+  def wait_for_input
+    Curses.getch
+  end
+
 end

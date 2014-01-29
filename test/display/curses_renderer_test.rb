@@ -45,4 +45,9 @@ class CursesRendererTests < Minitest::Test
     @renderer.exit
   end
 
+  def test_wait_for_input
+    Curses.expects(:getch)
+    @renderer.wait_for_input
+  end
+
 end

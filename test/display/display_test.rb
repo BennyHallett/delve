@@ -73,4 +73,9 @@ class DisplayTests < MiniTest::Test
     @renderer.expects(:exit)
     @display.exit
   end
+
+  def test_wait_for_input_defers_to_renderer
+    @renderer.expects(:wait_for_input)
+    @display.wait_for_input
+  end
 end
