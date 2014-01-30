@@ -19,5 +19,5 @@ Gem::Specification.new do |g|
   g.add_development_dependency('rake')
   g.add_development_dependency('minitest')
   g.add_development_dependency('mocha')
-  #g.add_runtime_dependency('curses')
+  g.add_runtime_dependency('perlin_noise')
 end
