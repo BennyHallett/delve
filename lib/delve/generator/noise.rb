@@ -13,9 +13,9 @@ class Noise
   def generate
     noise = Perlin::Noise.new 2
 
-    (0..@width-1).each do |x|
-      (0..@height-1).each do |y|
-        yield(x, y, noise[x, y])
+    0.step((@width-1) * 0.1, 0.1) do |x|
+      0.step((@height-1) * 0.1, 0.1).each do |y|
+        yield(x*10, y*10, noise[x, y])
       end
     end
   end
