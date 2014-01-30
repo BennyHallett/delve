@@ -16,4 +16,13 @@ class NoiseTest < Minitest::Test
     end
   end
 
+  def test_generate_noise
+    m = mock('object')
+    m.expects(:handle).times(9)
+    noise = Noise.new 3, 3
+    noise.generate do |x, y, value|
+      m.handle(x, y, value)
+    end
+  end
+
 end
