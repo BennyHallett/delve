@@ -40,4 +40,12 @@ class Display
   def exit
     @renderer.exit
   end
+
+  def height
+    @renderer.height
+  end
+  
+  def width
+    @renderer.width
+  end
 end

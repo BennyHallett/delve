@@ -73,4 +73,14 @@ class DisplayTests < MiniTest::Test
     @renderer.expects(:exit)
     @display.exit
   end
+
+  def test_height_defers_to_renderer
+    @renderer.expects(:height)
+    @display.height
+  end
+
+  def test_width_defers_to_renderer
+    @renderer.expects(:width)
+    @display.width
+  end
 end
