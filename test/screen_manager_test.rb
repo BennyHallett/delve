@@ -8,10 +8,12 @@ class ScreenManagerTest < Minitest::Test
     @manager = ScreenManager.new
     @screen = mock('object')
     @display = mock('object')
+    @input = mock('object')
   end
 
   def test_empty_is_true_initially
     assert @manager.empty?
+    @input = mock('object')
   end
 
   def test_push_first_screen
@@ -26,18 +28,25 @@ class ScreenManagerTest < Minitest::Test
   end
 
   def test_send_events_to_top_screen
-    @screen.expects(:update)
+    @screen.expects(:update).with(@input)
     first_screen = mock('object')
     first_screen.expects(:update).never
 
     @manager.push_screen first_screen
     @manager.push_screen @screen
-    @manager.update
+    @manager.update @input
   end
 
   def test_send_events_with_no_screen_should_fail
     assert_raises RuntimeError do
-      @manager.update
+      @manager.update @input
+    end
+  end
+
+  def test_send_events_with_no_input_fails
+    @manager.push_screen @screen
+    assert_raises RuntimeError do
+      @manager.update nil
     end
   end
 
