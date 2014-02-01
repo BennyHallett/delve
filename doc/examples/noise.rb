@@ -15,7 +15,14 @@ def generate_noise(grain, d)
     t = 'w' if v < 3
     t = 'W' if v < 1
 
-    d.draw(x, y, t)
+    bg = :black
+    bg = :green if v < 7
+    bg = :cyan if v < 3
+    bg = :blue if v < 1
+    
+    fg = :white
+
+    d.draw(x, y, t, fg, bg)
   end
 end
 

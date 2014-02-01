@@ -2,12 +2,24 @@ require 'curses'
 
 class CursesRenderer
 
+  @@colors = {
+    :black      => Curses::COLOR_BLACK,
+    :red        => Curses::COLOR_RED,
+    :blue       => Curses::COLOR_BLUE,
+    :white      => Curses::COLOR_WHITE,
+    :cyan       => Curses::COLOR_CYAN,
+    :green      => Curses::COLOR_GREEN,
+    :magenta    => Curses::COLOR_MAGENTA,
+    :yellow     => Curses::COLOR_YELLOW
+  }
+
   def init
     Curses.init_screen
     Curses.start_color
     Curses.nl
     Curses.noecho
     Curses.curs_set 0
+    @pairs = Array.new
   end
 
   def exit
@@ -24,9 +36,17 @@ class CursesRenderer
   end
 
   def draw(x, y, char, fg, bg)
+    pair = "#{fg.to_s},#{bg.to_s}"
+    if !@pairs.include? pair
+      @pairs.push pair
+      Curses.init_pair(@pairs.index(pair)+1, @@colors[fg], @@colors[bg])
+    end
     # Seem to need to flip x and y
+    index = @pairs.index(pair)+1
     Curses.setpos(y, x)
-    Curses.addstr(char)
+    Curses.attron(Curses.color_pair(index)) do
+      Curses.addstr(char)
+    end
   end
 
   def width
