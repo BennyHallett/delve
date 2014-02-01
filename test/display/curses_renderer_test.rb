@@ -47,4 +47,14 @@ class CursesRendererTests < Minitest::Test
     @renderer.render({ '1,1' => {:x => 2, :y => 2, :char => '@', :foreground => :white, :background => :black} })
     @renderer.exit
   end
+
+  def test_height
+    Curses.expects(:lines)
+    @renderer.height
+  end
+
+  def test_width
+    Curses.expects(:cols)
+    @renderer.width
+  end
 end

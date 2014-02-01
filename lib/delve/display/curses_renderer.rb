@@ -28,4 +28,12 @@ class CursesRenderer
     Curses.setpos(y, x)
     Curses.addstr(char)
   end
+
+  def width
+    Curses.cols
+  end
+
+  def height
+    Curses.lines
+  end
 end
