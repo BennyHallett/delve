@@ -12,7 +12,8 @@ Gem::Specification.new do |g|
                     'lib/delve/display/display.rb',
                     'lib/delve/display/curses_renderer.rb',
                     'lib/delve/scheduler/scheduler.rb',
-                    'lib/delve/widgets/text.rb'
+                    'lib/delve/widgets/text.rb',
+                    'lib/delve/input/input.rb'
                   ]
   g.homepage    = 'http://bennyhallett.com/delve'
   g.license    = 'BSD'
