@@ -44,10 +44,4 @@ class CursesRendererTests < Minitest::Test
     @renderer.render({ '1,1' => {:x => 2, :y => 2, :char => '@', :foreground => :white, :background => :black} })
     @renderer.exit
   end
-
-  def test_wait_for_input
-    Curses.expects(:getch)
-    @renderer.wait_for_input
-  end
-
 end

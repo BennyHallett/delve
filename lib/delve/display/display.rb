@@ -40,9 +40,4 @@ class Display
   def exit
     @renderer.exit
   end
-
-  def wait_for_input
-    @renderer.wait_for_input
-  end
-
 end
