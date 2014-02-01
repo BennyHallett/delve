@@ -14,6 +14,7 @@ class CursesRendererTests < Minitest::Test
     Curses.expects(:init_screen)
     Curses.expects(:nl)
     Curses.expects(:noecho)
+    Curses.expects(:curs_set).with(0)
     @renderer.init
   end
 
@@ -28,6 +29,7 @@ class CursesRendererTests < Minitest::Test
     Curses.expects(:init_screen)
     Curses.expects(:nl)
     Curses.expects(:noecho)
+    Curses.expects(:curs_set).with(0)
     @renderer.init
     @renderer.draw 2, 2, '@', :white, :black
     @renderer.exit
@@ -38,6 +40,7 @@ class CursesRendererTests < Minitest::Test
     Curses.expects(:init_screen)
     Curses.expects(:nl)
     Curses.expects(:noecho)
+    Curses.expects(:curs_set).with(0)
     Curses.expects(:clear)
     @renderer.expects(:draw).with(2, 2, '@', :white, :black)
     @renderer.init
