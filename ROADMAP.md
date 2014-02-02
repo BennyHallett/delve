@@ -11,6 +11,7 @@ Roadmap
   * delve mygame -g dungeon -r curses
 * Dungeon renderer
 * StatusBar widget
+* KeyValue widget
 
 **v0.0.3**
 
