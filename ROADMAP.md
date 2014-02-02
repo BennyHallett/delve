@@ -2,6 +2,7 @@ Roadmap
 =======
 **v0.0.3**
 
+* Make game class use Input class
 * Border-box widget
   - option to not-render corners
   - option for centered text in header
