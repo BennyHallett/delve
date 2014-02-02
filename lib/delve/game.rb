@@ -1,9 +1,11 @@
 class Game
-  def initialize(display, screen_manager)
+  def initialize(display, screen_manager, input)
     raise 'Unable to initialize game when display is nil' unless display
     raise 'Unable to initialize game when screen manager is nil' unless screen_manager
+    raise 'Unable to initalize game when input is nil' unless input
     @display = display
     @screen_manager = screen_manager
+    @input = input
   end
 
   def start
@@ -11,7 +13,7 @@ class Game
     quit = false
     while !quit
       @screen_manager.render @display
-      quit = @screen_manager.update
+      quit = @screen_manager.update @input
     end
   end
 

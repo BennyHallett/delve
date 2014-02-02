@@ -1,21 +1,33 @@
 Roadmap
 =======
+
+**v0.2.0**
+
+* Generic YAML based entity factory
+
+**v0.1.0**
+
+* One command roguelike
+  * delve mygame -g dungeon -r curses
+* Dungeon renderer
+* StatusBar widget
+
 **v0.0.3**
 
-* Make game class use Input class
+* Make game class use Input class [DONE]
 * Border-box widget [DONE]
-  - option to not-render corners [DONE]
-  - option for centered text in header [DONE]
+  * option to not-render corners [DONE]
+  * option for centered text in header [DONE]
 * Easier mapping to keys other than character keys
 * Game item
 * Position component
 * Movement component
 * Complete turn engine
 * Text Widget improvements
-  - :center both vertically and horizontally
-  - :center at an x-position or a y-position
+  * :center both vertically and horizontally
+  * :center at an x-position or a y-position
 * Ascii Art widget (for doing main screen art, etc)
-  - :center both vertically and horizontally
+  * :center both vertically and horizontally
 
 **v0.0.2**
 
