@@ -1,5 +1,5 @@
 class MenuWidget
-  def initialize(x, y, items)
+  def initialize(x, y, items, foreground=:white, background=:black, highlight=:red)
     raise 'Cannot initialize menu widget when x is nil' unless x
     raise 'Cannot initialize menu widget when y is nil' unless y
     raise 'Cannot initialize menu widget when items is nil' unless items
@@ -9,6 +9,9 @@ class MenuWidget
     @y = y
     @items = items
     @selected_index = 0
+    @fg = foreground
+    @bg = background
+    @highlight = highlight
   end
 
   def selected_item
@@ -42,7 +45,11 @@ class MenuWidget
     @items.keys.each do |key|
       chars = 0
       @items[key].each_char do |c|
-        display.draw(@x + chars, @y + items, c)
+        fg = @selected_index == items ? @bg : @fg
+        bg = @selected_index == items ? @fg : @bg
+        text_color = (c == key || c == key.upcase) ? @highlight : fg
+        display.draw(@x + chars, @y + items, c, text_color, bg)
+        chars += 1
       end
       items += 1
     end

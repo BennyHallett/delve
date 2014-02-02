@@ -84,4 +84,8 @@ class MenuWidgetTest < Minitest::Test
     display.expects(:draw).times(12)
     @menu.draw(display)
   end
+
+  def test_set_colors
+    MenuWidget.new @x, @y, @items, :red, :black, :green
+  end
 end
