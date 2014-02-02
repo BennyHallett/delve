@@ -20,7 +20,7 @@ Roadmap
   * option to not-render corners [DONE]
   * option for centered text in header [DONE]
 * Easier mapping to keys other than character keys
-* Game item
+* Game item [DONE]
 * Position component
 * Movement component
 * Complete turn engine
