@@ -27,4 +27,14 @@ class EntityTest < Minitest::Test
     end
   end
 
+  def test_get_unknown_component_returns_nil
+    assert_nil @entity.get :position
+  end
+
+  def test_get_component
+    @component.stubs(:id).returns(:position)
+    @entity.add @component
+    assert_equal @component, @entity.get(:position)
+  end
+
 end

@@ -11,4 +11,9 @@ class Entity
     raise 'Cannot add the same component more than once' if has?(component.id)
     @components[component.id] = component
   end
+
+  def get(component_id)
+    return nil unless has?(component_id)
+    @components[component_id]
+  end
 end
