@@ -3,6 +3,8 @@ Roadmap
 **v0.0.3**
 
 * Border-box widget
+  - option to not-render corners
+  - option for centered text in header
 * Easier mapping to keys other than character keys
 * Game item
 * Position component
