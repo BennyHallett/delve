@@ -11,8 +11,6 @@ class MenuWidgetTest < Minitest::Test
     @menu = MenuWidget.new @x, @y, @items
   end
 
-  # rendering
-
   def test_initialising_without_x_position_raises_error
     assert_raises RuntimeError do
       MenuWidget.new nil, @y, @items
