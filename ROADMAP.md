@@ -1,9 +1,22 @@
 Roadmap
 =======
+**v0.0.3**
+
+* Border-box widget
+* Easier mapping to keys other than character keys
+* Game item
+* Position component
+* Movement component
+* Complete turn engine
+* Text Widget improvements
+  - :center both vertically and horizontally
+  - :center at an x-position or a y-position
+* Ascii Art widget (for doing main screen art, etc)
+  - :center both vertically and horizontally
 
 **v0.0.2**
 
-* Menu widget (both selection and key based)
+* Menu widget (both selection and key based) [DONE]
 * Coloured output [DONE]
 * Cursor off screen after render [DONE]
 * Update requires means of input [DONE]
