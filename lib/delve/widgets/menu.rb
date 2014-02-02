@@ -37,5 +37,14 @@ class MenuWidget
 
   def draw(display)
     raise 'Cannot draw text when display is nil' unless display
+
+    items = 0
+    @items.keys.each do |key|
+      chars = 0
+      @items[key].each_char do |c|
+        display.draw(@x + chars, @y + items, c)
+      end
+      items += 1
+    end
   end
 end

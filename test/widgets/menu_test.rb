@@ -81,7 +81,7 @@ class MenuWidgetTest < Minitest::Test
 
   def test_render
     display = mock('object')
+    display.expects(:draw).times(12)
     @menu.draw(display)
-    assert false #complete this test
   end
 end
