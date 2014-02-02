@@ -3,9 +3,9 @@ Roadmap
 **v0.0.3**
 
 * Make game class use Input class
-* Border-box widget
+* Border-box widget [DONE]
   - option to not-render corners
-  - option for centered text in header
+  - option for centered text in header [DONE]
 * Easier mapping to keys other than character keys
 * Game item
 * Position component

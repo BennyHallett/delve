@@ -54,7 +54,7 @@ class BorderWidgetTest < Minitest::Test
 
   def test_render
     display = mock('onject')
+    display.expects(:draw).times(24)
     @border.draw(display)
-    assert false
   end
 end
