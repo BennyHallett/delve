@@ -7,7 +7,8 @@ class Entity
     @components.keys.include? component_id
   end
 
-  def add_component(component)
+  def add(component)
+    raise 'Cannot add the same component more than once' if has?(component.id)
     @components[component.id] = component
   end
 end
