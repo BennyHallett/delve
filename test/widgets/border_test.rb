@@ -52,6 +52,13 @@ class BorderWidgetTest < Minitest::Test
     BorderWidget.new @x, @y, @width, @height, nil, :red, :yellow
   end
 
+  def test_initialize_without_corners
+    border = BorderWidget.new @x, @y, @width, @height, nil, :red, :blue, false
+    display = mock('object')
+    display.expects(:draw).times(20)
+    border.draw display
+  end
+
   def test_render
     display = mock('onject')
     display.expects(:draw).times(24)
