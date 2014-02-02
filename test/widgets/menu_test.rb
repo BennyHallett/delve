@@ -11,10 +11,6 @@ class MenuWidgetTest < Minitest::Test
     @menu = MenuWidget.new @x, @y, @items
   end
 
-  # wrap over top
-  # wrap over bottom
-  # select by key not exist
-  # select by key
   # rendering
 
   def test_initialising_without_x_position_raises_error
@@ -71,6 +67,16 @@ class MenuWidgetTest < Minitest::Test
     @menu.next
     @menu.next
     assert_equal 'New Game', @menu.selected_item
+  end
+
+  def test_false_returned_if_selecting_item_that_doesnt_exist
+    assert !@menu.select('p')
+    assert_equal 'New Game', @menu.selected_item
+  end
+
+  def test_selecting_by_key
+    assert @menu.select('x')
+    assert_equal 'Exit', @menu.selected_item
   end
 
   def test_render

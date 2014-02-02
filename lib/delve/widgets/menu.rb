@@ -30,6 +30,11 @@ class MenuWidget
     end
   end
 
+  def select(key)
+    return false if !@items.keys.include? key
+    @selected_index = @items.keys.index key
+  end
+
   def draw(display)
     raise 'Cannot draw text when display is nil' unless display
   end
