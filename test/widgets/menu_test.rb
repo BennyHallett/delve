@@ -62,6 +62,17 @@ class MenuWidgetTest < Minitest::Test
     assert_equal 'New Game', @menu.selected_item
   end
 
+  def test_wrap_over_top
+    @menu.previous
+    assert_equal 'Exit', @menu.selected_item
+  end
+
+  def test_wrap_over_bottom
+    @menu.next
+    @menu.next
+    assert_equal 'New Game', @menu.selected_item
+  end
+
   def test_render
     display = mock('object')
     @menu.draw(display)

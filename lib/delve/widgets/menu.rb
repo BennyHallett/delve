@@ -18,10 +18,16 @@ class MenuWidget
 
   def next
     @selected_index += 1
+    if @selected_index >= @items.keys.length
+      @selected_index = 0
+    end
   end
 
   def previous
     @selected_index -= 1
+    if @selected_index < 0
+      @selected_index = @items.keys.length - 1
+    end
   end
 
   def draw(display)
