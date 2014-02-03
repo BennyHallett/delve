@@ -7,11 +7,16 @@ class MovementComponentTest < Minitest::Test
 
   def setup
     @parent = mock('object')
+    @position = mock('object')
     @fourway = MovementComponent.new @parent
+    @eightway = MovementComponent.new @parent, :eightway
   end
 
-  # test all diag movement on 4 way
   # test all movement styles
+
+  def test_id_is_movement
+    assert_equal :movement, @fourway.id
+  end
 
   def test_initialize_component_with_nil_parent_fails
     assert_raises RuntimeError do
@@ -57,6 +62,14 @@ class MovementComponentTest < Minitest::Test
     assert_raises RuntimeError do
       @fourway.south_east
     end
+  end
+
+  def test_move_north
+    @parent.expects(:has?).with(:position).returns(true)
+    @parent.expects(:get).with(:position).returns(@position)
+    @position.expects(:displace).with(0, -1)
+
+    @eightway.north
   end
 
 end
