@@ -21,7 +21,7 @@ Roadmap
   * option for centered text in header [DONE]
 * Easier mapping to keys other than character keys
 * Game item [DONE]
-* Position component
+* Position component [DONE]
 * Movement component
 * Complete turn engine
 * Text Widget improvements

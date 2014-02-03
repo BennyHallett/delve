@@ -16,7 +16,8 @@ Rake::TestTask.new do |t|
     'test/display/*_test.rb',
     'test/widgets/*_test.rb',
     'test/generator/*_test.rb',
-    'test/input/*_test.rb'
+    'test/input/*_test.rb',
+    'test/component/*_test.rb'
   ]
 end
 
