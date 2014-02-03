@@ -65,11 +65,16 @@ class MovementComponentTest < Minitest::Test
   end
 
   def test_move_north
-    @parent.expects(:has?).with(:position).returns(true)
-    @parent.expects(:get).with(:position).returns(@position)
-    @position.expects(:displace).with(0, -1)
+    set_movement_expectations 0, -1
 
     @eightway.north
+  end
+
+  private
+  def set_movement_expectations(dx, dy)
+    @parent.expects(:has?).with(:position).returns(true)
+    @parent.expects(:get).with(:position).returns(@position)
+    @position.expects(:displace).with(dx, dy)
   end
 
 end
