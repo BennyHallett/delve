@@ -27,7 +27,7 @@ Roadmap
 * Text Widget improvements
   * :center both vertically and horizontally
   * :center at an x-position or a y-position
-* Ascii Art widget (for doing main screen art, etc)
+* Ascii Art widget (for doing main screen art, etc) [DONE]
   * :center both vertically and horizontally
 
 **v0.0.2**
