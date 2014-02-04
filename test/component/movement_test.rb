@@ -66,8 +66,42 @@ class MovementComponentTest < Minitest::Test
 
   def test_move_north
     set_movement_expectations 0, -1
-
     @eightway.north
+  end
+
+  def test_move_north_east
+    set_movement_expectations 1, -1
+    @eightway.north_east
+  end
+
+  def test_move_east
+    set_movement_expectations 1, 0
+    @eightway.east
+  end
+
+  def test_move_south_east
+    set_movement_expectations 1, 1
+    @eightway.south_east
+  end
+
+  def test_move_south
+    set_movement_expectations 0, 1
+    @eightway.south
+  end
+
+  def test_move_south_west
+    set_movement_expectations -1, 1
+    @eightway.south_west
+  end
+
+  def test_move_west
+    set_movement_expectations -1, 0
+    @eightway.west
+  end
+
+  def test_move_north_west
+    set_movement_expectations -1, -1
+    @eightway.north_west
   end
 
   private

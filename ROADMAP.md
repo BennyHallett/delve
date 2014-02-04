@@ -22,7 +22,7 @@ Roadmap
 * Easier mapping to keys other than character keys
 * Game item [DONE]
 * Position component [DONE]
-* Movement component
+* Movement component [DONE]
 * Complete turn engine
 * Text Widget improvements
   * :center both vertically and horizontally

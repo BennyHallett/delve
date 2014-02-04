@@ -20,33 +20,50 @@ class MovementComponent
 
   def north_west
     raise @@diagonal_error unless diagonal_movement_is_valid
+    move -1, -1
   end
 
   def north_east
     raise @@diagonal_error unless diagonal_movement_is_valid
-
+    move 1, -1
   end
 
   def south_west
     raise @@diagonal_error unless diagonal_movement_is_valid
-
+    move -1, 1
   end
 
   def south_east
     raise @@diagonal_error unless diagonal_movement_is_valid
-
+    move 1, 1
   end
 
   def north
-    if @parent.has? :position
-      pos = @parent.get :position
-      pos.displace(0, -1)
-    end
+    move 0, -1
+  end
+  
+  def east
+    move 1, 0
+  end
+  
+  def south
+    move 0, 1
+  end
+
+  def west
+    move -1, 0
   end
 
   private
   def diagonal_movement_is_valid
     @style == :eightway
+  end
+
+  def move(dx, dy)
+    if @parent.has? :position
+      pos = @parent.get :position
+      pos.displace(dx, dy)
+    end
   end
 
 end
