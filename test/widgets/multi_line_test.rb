@@ -51,6 +51,21 @@ class MultiLineWidgetTest < Minitest::Test
     @widget.draw @display
   end
 
+  def test_center_vertically_on_odd_width_screen
+    @widget = MultiLineWidget.new @x, :center, ['a']
+    @display.expects(:height).returns(11)
+    @display.expects(:draw).with(@x, 6, 'a')
+    @widget.draw @display
+  end
+
+  def test_center_vertically_on_even_width_screen
+    @widget = MultiLineWidget.new @x, :center, ['a']
+    @display.expects(:height).returns(10)
+    @display.expects(:draw).with(@x, 5, 'a')
+    @widget.draw @display
+  end
+
+
   def test_render
     @display.expects(:draw).times(@length)
     @widget.draw @display

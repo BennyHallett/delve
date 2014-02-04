@@ -12,7 +12,7 @@ class MultiLineWidget
   def draw(display)
     raise 'Cannot draw text when display is nil' unless display
 
-    y = @y
+    y = determine_y(display) 
     @lines.each do |line|
       x = determine_x(display)
       line.each_char do |c|
@@ -29,5 +29,12 @@ class MultiLineWidget
       return (display.width / 2.0).ceil
     end 
     @x
+  end
+
+  def determine_y display
+    if @y == :center
+      return (display.height / 2.0).ceil
+    end
+    @y
   end
 end

@@ -28,7 +28,7 @@ Roadmap
   * :center both vertically and horizontally
   * :center at an x-position or a y-position
 * Ascii Art widget (for doing main screen art, etc) [DONE]
-  * :center both vertically and horizontally
+  * :center both vertically and horizontally [DONE]
 
 **v0.0.2**
 
