@@ -44,6 +44,13 @@ class MultiLineWidgetTest < Minitest::Test
     @widget.draw @display
   end
 
+  def test_center_horizontally_on_even_width_screen
+    @widget = MultiLineWidget.new :center, @y, ['a']
+    @display.expects(:width).returns(10)
+    @display.expects(:draw).with(5, @y, 'a')
+    @widget.draw @display
+  end
+
   def test_render
     @display.expects(:draw).times(@length)
     @widget.draw @display
