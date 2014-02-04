@@ -26,15 +26,26 @@ class MultiLineWidget
   private
   def determine_x display
     if @x == :center
-      return (display.width / 2.0).ceil
+      return (display.width / 2.0).ceil - (longest_line / 2.0).floor
     end 
     @x
   end
 
   def determine_y display
     if @y == :center
-      return (display.height / 2.0).ceil
+      return ((display.height / 2.0).ceil) - (@lines.length / 2.0).floor
     end
     @y
   end
+
+  def longest_line
+    value = -1
+    @lines.each do |line|
+      if value < line.length
+        value = line.length
+      end
+    end
+    return value
+  end
+
 end
