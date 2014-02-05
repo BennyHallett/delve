@@ -4,7 +4,7 @@ require 'delve/input/input'
 require 'delve/input/curses_input'
 require 'delve/widgets/text'
 
-title = TextWidget.new 0, 0, 'Press a character key to continue'
+title = TextWidget.new :center, 0, 'Press a character key to continue'
 display = Display.new CursesRenderer.new
 input = Input.new CursesInput.new
 size = TextWidget.new 0, 1, "The console is #{display.width}x#{display.height}."

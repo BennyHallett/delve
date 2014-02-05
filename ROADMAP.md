@@ -24,9 +24,8 @@ Roadmap
 * Position component [DONE]
 * Movement component [DONE]
 * Complete turn engine
-* Text Widget improvements
-  * :center both vertically and horizontally
-  * :center at an x-position or a y-position
+* Text Widget improvements [DONE]
+  * :center both vertically and horizontally [DONE]
 * Ascii Art widget (for doing main screen art, etc) [DONE]
   * :center both vertically and horizontally [DONE]
 

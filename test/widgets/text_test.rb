@@ -29,6 +29,26 @@ class TextWidgetTest < Minitest::Test
     end
   end
 
+  def test_render_centered_horizontally
+    widget = TextWidget.new :center, 0, 'abc'
+    display = mock('object')
+    display.expects(:width).returns(10)
+    display.expects(:draw).with(4, 0, 'a')
+    display.expects(:draw).with(5, 0, 'b')
+    display.expects(:draw).with(6, 0, 'c')
+    widget.draw display
+  end
+
+  def test_render_centered_vertically
+    widget = TextWidget.new 0, :center, 'abc'
+    display = mock('object')
+    display.expects(:height).returns(10)
+    display.expects(:draw).with(0, 5, 'a')
+    display.expects(:draw).with(1, 5, 'b')
+    display.expects(:draw).with(2, 5, 'c')
+    widget.draw display
+  end
+
   def test_render
     display = mock('onject')
     widget = TextWidget.new 1, 1, 'Some text'
