@@ -15,4 +15,10 @@ class CursesInputTests < Minitest::Test
     @input.wait_for_input
   end
 
+  def test_wait_for_non_character_input
+    Curses.expects(:getch).returns(263)
+    key = @input.wait_for_input
+    assert_equal :backspace, key
+  end
+
 end
