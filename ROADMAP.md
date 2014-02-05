@@ -10,8 +10,10 @@ Roadmap
 * One command roguelike
   * delve mygame -g dungeon -r curses
 * Dungeon renderer
+* Non-Corridor Dungeon Renderer
 * StatusBar widget
 * KeyValue widget
+* Viewport widget
 
 **v0.0.3**
 
@@ -19,7 +21,7 @@ Roadmap
 * Border-box widget [DONE]
   * option to not-render corners [DONE]
   * option for centered text in header [DONE]
-* Easier mapping to keys other than character keys
+* Easier mapping to keys other than character keys [DONE]
 * Game item [DONE]
 * Position component [DONE]
 * Movement component [DONE]
