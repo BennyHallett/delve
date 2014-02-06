@@ -22,4 +22,16 @@ class SchedulerTest < Minitest::Test
     assert_equal expected_result, @scheduler.next
   end
 
+  def test_remove_unknown_item_from_queue_returns_false
+    event = 'event'
+    @queue.expects(:remove).with(event).returns(false)
+    assert !@scheduler.remove(event)
+  end
+
+  def test_remove_known_item_from_queue_returns_true
+    event = 'event'
+    @queue.expects(:remove).with(event).returns(true)
+    assert @scheduler.remove(event)
+  end
+
 end
