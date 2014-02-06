@@ -7,13 +7,18 @@ Roadmap
 
 **v0.1.0**
 
-* One command roguelike
-  * delve mygame -g dungeon -r curses
-* Dungeon renderer
 * Non-Corridor Dungeon Renderer
 * StatusBar widget
 * KeyValue widget
 * Viewport widget
+* Speed Scheduler
+
+**v0.0.4**
+
+* One command roguelike
+  * delve mygame -g dungeon -r curses
+* Dungeon renderer
+* Simple Scheduler
 
 **v0.0.3**
 
@@ -26,6 +31,7 @@ Roadmap
 * Position component [DONE]
 * Movement component [DONE]
 * Complete turn engine
+  * Only include action turn scheduler
 * Text Widget improvements [DONE]
   * :center both vertically and horizontally [DONE]
 * Ascii Art widget (for doing main screen art, etc) [DONE]

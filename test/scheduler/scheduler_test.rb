@@ -34,4 +34,9 @@ class SchedulerTest < Minitest::Test
     assert @scheduler.remove(event)
   end
 
+  def test_clear_clears_queue
+    @queue.expects(:clear)
+    @scheduler.clear
+  end
+
 end

@@ -24,4 +24,10 @@ class Scheduler
     result
   end
 
+  def clear
+    @queue.clear
+    @current = nil
+    @repear = Array.new
+  end
+
 end
