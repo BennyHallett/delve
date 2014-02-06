@@ -8,6 +8,7 @@ class SchedulerTest < Minitest::Test
   def setup
     @queue = mock('object')
     @scheduler = Scheduler.new @queue
+    @item = 'item'
   end
 
   def test_get_time_from_event_queue
@@ -17,26 +18,33 @@ class SchedulerTest < Minitest::Test
   end
 
   def test_get_next
-    expected_result = 'Expected Result'
-    @queue.expects(:get).returns(expected_result)
-    assert_equal expected_result, @scheduler.next
+    @queue.expects(:get).returns(@item)
+    assert_equal @item, @scheduler.next
   end
 
   def test_remove_unknown_item_from_queue_returns_false
-    event = 'event'
-    @queue.expects(:remove).with(event).returns(false)
-    assert !@scheduler.remove(event)
+    @queue.expects(:remove).with(@item).returns(false)
+    assert !@scheduler.remove(@item)
   end
 
   def test_remove_known_item_from_queue_returns_true
-    event = 'event'
-    @queue.expects(:remove).with(event).returns(true)
-    assert @scheduler.remove(event)
+    @queue.expects(:remove).with(@item).returns(true)
+    assert @scheduler.remove(@item)
   end
 
   def test_clear_clears_queue
     @queue.expects(:clear)
     @scheduler.clear
+  end
+
+  ## Not sure how exactly how to test this method
+
+  def test_add_non_repeating_item
+    @scheduler.add(@item)
+  end
+
+  def test_add_repeating_item
+    @scheduler.add(@item, true)
   end
 
 end

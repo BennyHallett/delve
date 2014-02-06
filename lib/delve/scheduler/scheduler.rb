@@ -30,4 +30,8 @@ class Scheduler
     @repear = Array.new
   end
 
+  def add(item, repeat=false)
+    @repeat << item if repeat
+  end
+
 end
