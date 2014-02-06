@@ -16,6 +16,10 @@ class SchedulerTest < Minitest::Test
     assert_equal 10, time
   end
 
-  
+  def test_get_next
+    expected_result = 'Expected Result'
+    @queue.expects(:get).returns(expected_result)
+    assert_equal expected_result, @scheduler.next
+  end
 
 end
