@@ -19,6 +19,7 @@ Roadmap
   * delve mygame -g dungeon -r curses
 * Dungeon renderer
 * Simple Scheduler
+* Travis CI builds
 
 **v0.0.3**
 
@@ -31,7 +32,7 @@ Roadmap
 * Position component [DONE]
 * Movement component [DONE]
 * Complete turn engine
-  * Only include action turn scheduler
+  * Only include action turn scheduler [DONE]
 * Text Widget improvements [DONE]
   * :center both vertically and horizontally [DONE]
 * Ascii Art widget (for doing main screen art, etc) [DONE]

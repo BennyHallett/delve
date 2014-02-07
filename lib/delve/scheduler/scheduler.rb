@@ -27,7 +27,7 @@ class Scheduler
   def clear
     @queue.clear
     @current = nil
-    @repear = Array.new
+    @repeat = Array.new
   end
 
   def add(item, repeat=false)
