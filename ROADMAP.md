@@ -20,6 +20,7 @@ Roadmap
 * Dungeon renderer
 * Simple Scheduler
 * Travis CI builds
+* Center menu widget
 
 **v0.0.3**
 
