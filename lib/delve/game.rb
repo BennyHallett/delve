@@ -13,6 +13,8 @@ class Game
     quit = false
     while !quit
       @screen_manager.render @display
+      @display.render
+
       quit = @screen_manager.update @input
     end
   end

@@ -37,6 +37,7 @@ class GameTest < Minitest::Test
   end
 
   def test_start_game
+    @display.expects(:render)
     @screen_manager.expects(:empty?).returns(false)
     @screen_manager.expects(:render).with(@display)
     @screen_manager.expects(:update).with(@input).returns(true)
