@@ -21,6 +21,9 @@ Roadmap
 * Simple Scheduler
 * Travis CI builds
 * Center menu widget
+* Name generator
+  - Fantasy
+  - SciFi
 
 **v0.0.3**
 
