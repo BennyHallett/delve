@@ -1,5 +1,5 @@
 class BorderWidget
-  def initialize(x, y, width, height, heading=nil, fg=:white, bg=:black, corners=true)
+  def initialize(x, y, width, height, heading=nil, fg=:white, bg=:black)
     raise 'Cannot initialize border widget when x is nil' unless x
     raise 'Cannot initialize border widget when y is nil' unless y
     raise 'Cannot initailize border widget when width is nil' unless width
@@ -13,7 +13,6 @@ class BorderWidget
     @heading = heading
     @fg = fg
     @bg = bg
-    @corners = corners
   end
 
   def draw(display)
@@ -33,10 +32,8 @@ class BorderWidget
       if @heading and x > header_start and x <= header_end
         char = header_text[x-header_start-1]
       end
-      if char == '-' or @corners 
-        display.draw x, @y, char, @fg, @bg
-        display.draw x, (@y+@height-1), (x == @x || x == (@x+@width-1)) ? '+' : '-', @fg, @bg
-      end
+      display.draw x, @y, char, @fg, @bg
+      display.draw x, (@y+@height-1), (x == @x || x == (@x+@width-1)) ? '+' : '-', @fg, @bg
     end
 
     ((@y+1)..(@y+@height-2)).each do |y|
