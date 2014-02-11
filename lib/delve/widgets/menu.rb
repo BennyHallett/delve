@@ -44,14 +44,41 @@ class MenuWidget
     items = 0
     @items.keys.each do |key|
       chars = 0
+      y = determine_y display
       @items[key].each_char do |c|
         fg = @selected_index == items ? @bg : @fg
         bg = @selected_index == items ? @fg : @bg
+        x = determine_x display
         text_color = (c == key || c == key.upcase) ? @highlight : fg
-        display.draw(@x + chars, @y + items, c, text_color, bg)
+        display.draw(x + chars, y + items, c, text_color, bg)
         chars += 1
       end
       items += 1
     end
+  end
+
+  private
+  def determine_x display
+    if @x == :center
+      return (display.width / 2.0).ceil - (longest_line / 2.0).floor
+    end
+    @x
+  end
+
+  def determine_y display
+    if @y == :center
+      return ((display.height / 2.0).ceil) - (@items.keys.length / 2.0).floor
+    end
+    @y
+  end
+
+  def longest_line
+    value = -1
+    @items.keys.each do |key|
+      if value < @items[key].length
+        value = @items[key].length
+      end
+    end
+    return value
   end
 end

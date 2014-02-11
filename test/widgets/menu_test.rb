@@ -9,6 +9,7 @@ class MenuWidgetTest < Minitest::Test
     @y = 5
     @items = { 'n' => 'New Game', 'x' => 'Exit' }
     @menu = MenuWidget.new @x, @y, @items
+    @display = mock('object')
   end
 
   def test_initialising_without_x_position_raises_error
@@ -78,9 +79,22 @@ class MenuWidgetTest < Minitest::Test
   end
 
   def test_render
-    display = mock('object')
-    display.expects(:draw).times(12)
-    @menu.draw(display)
+    @display.expects(:draw).times(12)
+    @menu.draw(@display)
+  end
+
+  def test_center_horizontally
+    @menu = MenuWidget.new :center, @y, {'a' => 'a'}
+    @display.expects(:width).returns(11)
+    @display.expects(:draw).with(6, @y, 'a', :red, :white)
+    @menu.draw @display
+  end
+
+  def test_center_vertically
+    @menu = MenuWidget.new @x, :center, {'a' => 'a'}
+    @display.expects(:height).returns(11)
+    @display.expects(:draw).with(@x, 6, 'a', :red, :white)
+    @menu.draw @display
   end
 
   def test_set_colors

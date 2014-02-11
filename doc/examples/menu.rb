@@ -6,7 +6,7 @@ require 'delve/widgets/menu'
 
 display = Display.new CursesRenderer.new
 input = Input.new CursesInput.new
-menu = MenuWidget.new 1, 1, { 'f' => 'First item', 's' => 'Second item', 'd' => 'Third item' }
+menu = MenuWidget.new :center, 1, { 'f' => 'First item', 's' => 'Second item', 'd' => 'Third item' }
 
 menu.draw display
 display.render
