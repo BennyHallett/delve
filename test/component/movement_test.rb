@@ -8,6 +8,7 @@ class MovementComponentTest < Minitest::Test
   def setup
     @parent = mock('object')
     @position = mock('object')
+    @collision = mock('object')
     @fourway = MovementComponent.new @parent
     @eightway = MovementComponent.new @parent, :eightway
   end
@@ -66,42 +67,82 @@ class MovementComponentTest < Minitest::Test
 
   def test_move_north
     set_movement_expectations 0, -1
+    @parent.expects(:has?).with(:collision).returns(false)
     @eightway.north
   end
 
   def test_move_north_east
     set_movement_expectations 1, -1
+    @parent.expects(:has?).with(:collision).returns(false)
     @eightway.north_east
   end
 
   def test_move_east
     set_movement_expectations 1, 0
+    @parent.expects(:has?).with(:collision).returns(false)
     @eightway.east
   end
 
   def test_move_south_east
     set_movement_expectations 1, 1
+    @parent.expects(:has?).with(:collision).returns(false)
     @eightway.south_east
   end
 
   def test_move_south
     set_movement_expectations 0, 1
+    @parent.expects(:has?).with(:collision).returns(false)
     @eightway.south
   end
 
   def test_move_south_west
     set_movement_expectations -1, 1
+    @parent.expects(:has?).with(:collision).returns(false)
     @eightway.south_west
   end
 
   def test_move_west
     set_movement_expectations -1, 0
+    @parent.expects(:has?).with(:collision).returns(false)
     @eightway.west
   end
 
   def test_move_north_west
     set_movement_expectations -1, -1
+    @parent.expects(:has?).with(:collision).returns(false)
     @eightway.north_west
+  end
+
+  def test_move_when_there_is_no_collision
+    @parent.expects(:has?).with(:collision).returns(true)
+    @parent.expects(:get).with(:collision).returns(@collision)
+    @collision.expects(:free?).returns(true)
+    @position.expects(:x).returns(1)
+    @position.expects(:y).returns(1)
+
+    set_movement_expectations 0, 1
+
+    @fourway.south
+  end
+
+  def test_dont_move_when_there_is_collision
+    @parent.expects(:has?).with(:collision).returns(true)
+    @parent.expects(:get).with(:collision).returns(@collision)
+    @collision.expects(:free?).returns(false)
+    @position.expects(:x).returns(1)
+    @position.expects(:y).returns(1)
+
+    @parent.expects(:has?).with(:position).returns(true)
+    @parent.expects(:get).with(:position).returns(@position)
+
+    @fourway.south
+  end
+  
+  def test_always_move_if_no_collision_component
+    set_movement_expectations 0, -1
+    @parent.expects(:has?).with(:collision).returns(false)
+
+    @fourway.north
   end
 
   private

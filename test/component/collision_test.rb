@@ -29,11 +29,11 @@ class CollisionComponentTest < Minitest::Test
 
   def test_free_returns_true_if_world_tile_is_free
     @detector.expects(:free).with(1, 2).returns(true)
-    assert @collision.free(1, 2)
+    assert @collision.free?(1, 2)
   end
 
   def test_free_returns_false_if_world_tile_is_not_free
     @detector.expects(:free).with(2, 1).returns(false)
-    assert !@collision.free(2, 1)
+    assert !@collision.free?(2, 1)
   end
 end

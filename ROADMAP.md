@@ -21,7 +21,7 @@ Roadmap
 * Simple Scheduler
 * Travis CI builds
 * Move collision component into library [DONE]
-* Make move component check for collisions
+* Make move component check for collisions [DONE]
 * Center menu widget [DONE]
 * Name generator
   - Fantasy

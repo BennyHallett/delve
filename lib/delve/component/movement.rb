@@ -62,7 +62,16 @@ class MovementComponent
   def move(dx, dy)
     if @parent.has? :position
       pos = @parent.get :position
-      pos.displace(dx, dy)
+
+      if @parent.has? :collision
+        col = @parent.get :collision
+
+        if col.free?(pos.x + dx, pos.y + dy)
+          pos.displace(dx, dy)
+        end
+      else
+        pos.displace(dx, dy)
+      end
     end
   end
 
