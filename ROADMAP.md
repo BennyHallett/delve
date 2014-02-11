@@ -20,7 +20,7 @@ Roadmap
 * Dungeon renderer
 * Simple Scheduler
 * Travis CI builds
-* Move collision component into library
+* Move collision component into library [DONE]
 * Make move component check for collisions
 * Center menu widget [DONE]
 * Name generator
