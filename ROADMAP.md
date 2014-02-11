@@ -20,7 +20,9 @@ Roadmap
 * Dungeon renderer
 * Simple Scheduler
 * Travis CI builds
-* Center menu widget
+* Move collision component into library
+* Make move component check for collisions
+* Center menu widget [DONE]
 * Name generator
   - Fantasy
   - SciFi
