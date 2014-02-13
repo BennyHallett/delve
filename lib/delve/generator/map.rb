@@ -16,4 +16,15 @@ class Map
     @height
   end
 
+  def fill(value)
+    map = Array.new
+    (0..@height-1).each do |y|
+      map << Array.new
+      (0..@width-1).each do
+        map[y] << value
+      end
+    end
+    map
+  end
+
 end

@@ -16,4 +16,16 @@ class MapTest < Minitest::Test
     assert_equal 24, @map.height
   end
 
+  def test_fill_map_with_ones
+    @map = Map.new 10, 10
+    result = @map.fill 1
+    tester = mock('object')
+    tester.expects(:go).with(1).times(100)
+    result.each do |y|
+      y.each do |val|
+        tester.go(val)
+      end
+    end
+  end
+
 end
