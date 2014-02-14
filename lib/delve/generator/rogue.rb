@@ -169,7 +169,48 @@ class RogueGenerator < Map
   end
 
   def create_rooms
+    w = @width
+    h = @height
 
+    cw = @options[:cell_width]
+    ch = @options[:cell_height]
+
+    cwp = (w / cw).floor
+    chp = (h / ch).floor
+
+    room_width = @options[:room_width]
+    room_height = @options[:room_height]
+
+    (0..cw-1).each do |i|
+      (0..ch-1).each do |j|
+        sx = cwp * i
+        sy = chp * j
+
+        sx = 1 if sx == 0
+        sy = 1 if sy == 0
+
+        roomw = random_int room_width[0], room_width[1]
+        roomh = random_int room_height[0], room_height[1]
+
+        if j > 0
+          other_room = @rooms[i][j-1]
+          while (sy - (other_room[:y] + other_room[:height]) < 3)
+            sy++
+          end
+        end
+        if i > 0
+          other_room = @rooms[i-1][j]
+          while (sx - (other_room[:x] + other_room[:width]) < 3)
+            sx++
+          end
+        end
+
+        sx_offset = ((random_int 0, cwp-roomw) / 2).round
+        sy_offset = ((random_int 0, chp-roomh) / 2).round
+
+        # This is where we're at
+      end
+    end
   end
 
 
