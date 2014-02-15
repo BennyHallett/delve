@@ -208,7 +208,35 @@ class RogueGenerator < Map
         sx_offset = ((random_int 0, cwp-roomw) / 2).round
         sy_offset = ((random_int 0, chp-roomh) / 2).round
 
-        # This is where we're at
+        while sx + sx_offset + roomw >= w
+          if sx_offset > 0
+            sx_offset -= 1
+          else
+            roomw -= 1
+          end
+        end
+
+        while sy + sy_offset + roomh >= h
+          if xy_offset > 0
+            sy_offset -= 1
+          else
+            roomh -= 1
+          end
+        end
+
+        sx = sx + sx_offset
+        sy = sy + sy_offset
+
+        @rooms[i][j][:x] = sx
+        @rooms[i][j][:y] = sy
+        @rooms[i][j][:width] = roomw
+        @rooms[i][j][:height] = roomh
+
+        (sx..sx + roomw - 1).each do |ii|
+          (sy..sy + roomh - 1).each do |jj|
+            @map[ii][jj] = 0
+          end
+        end
       end
     end
   end
