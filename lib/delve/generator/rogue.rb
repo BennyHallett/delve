@@ -1,3 +1,5 @@
+require 'delve/generator/map'
+
 class RogueGenerator < Map
 
   def initialize(width=nil, height=nil, opts=Hash.new)
@@ -15,7 +17,7 @@ class RogueGenerator < Map
     end
   end
 
-  def create
+  def generate
     @map = fill 1
     @rooms = Array.new
     @connected_cells = Array.new
@@ -24,7 +26,7 @@ class RogueGenerator < Map
     connect_rooms
     connect_unconnected_rooms
     create_rooms
-    create_corridors
+    #create_corridors
 
     if block_given?
       (0..@map.length-1).each do |x|
@@ -78,13 +80,13 @@ class RogueGenerator < Map
       loop do
         found = false
         idx = dir_to_check.sample
-        dir_to_check.remove idx
+        dir_to_check.delete idx
 
         new_cgx = determine_ncgx(idx)
         ncgx = cgx + new_cgx[:x]
         ncgy = cgx + new_cgx[:y]
 
-        room = @rooms[cgx][xgy]
+        room = @rooms[cgx][cgy]
 
         if room[:connections].length > 0
           if room[:connections][0][0] == ncgx and room[:connections][0][1] == ncgy
@@ -92,9 +94,9 @@ class RogueGenerator < Map
           end
         end
 
-        other_room = this.rooms[ncgx][ncgy]
+        other_room = @rooms[ncgx][ncgy]
 
-        if other_room[:connections].length == 0
+        if other_room and other_room[:connections].length == 0
           other_room[:connections] << [cgx, cgy]
 
           @connected_cells << [ncgx, ncgy]
@@ -133,7 +135,7 @@ class RogueGenerator < Map
           loop do
 
             dir_idx = directions.sample
-            directions.remove dir_idx
+            directions.delete dir_idx
 
             ncgx = determine_ncgx
             new_i = i + ncgx[:x]
@@ -195,13 +197,13 @@ class RogueGenerator < Map
         if j > 0
           other_room = @rooms[i][j-1]
           while (sy - (other_room[:y] + other_room[:height]) < 3)
-            sy++
+            sy += 1
           end
         end
         if i > 0
           other_room = @rooms[i-1][j]
           while (sx - (other_room[:x] + other_room[:width]) < 3)
-            sx++
+            sx += 1
           end
         end
 

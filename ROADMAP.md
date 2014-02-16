@@ -1,9 +1,14 @@
 Roadmap
 =======
 
+**v0.3.0**
+
+* Tile renderer
+
 **v0.2.0**
 
 * Generic YAML based entity factory
+* Animation
 
 **v0.1.0**
 
