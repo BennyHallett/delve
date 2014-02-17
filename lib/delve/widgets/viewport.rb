@@ -13,6 +13,10 @@ class ViewportWidget
     @world = world
   end
 
+  def focus(x, y)
+    raise 'Cannot focus viewport out of world' if x < 0 || y < 0 || x >= @world.width || y >= @world.height
+  end
+
   def draw(display)
     raise 'Cannot draw text when display is nil' unless display
 
