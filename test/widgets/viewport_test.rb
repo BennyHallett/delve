@@ -79,8 +79,8 @@ class ViewportWidgetTest < Minitest::Test
   end
 
   def test_focus_at_5_5_renders_4_4_to_6_6
-    @world.expects(:width).returns(20)
-    @world.expects(:height).returns(100)
+    @world.stubs(:width).returns(20)
+    @world.stubs(:height).returns(100)
     expect_world 4, 4, 6, 6
     expect_draw 1, 1, 3, 3
 
@@ -89,12 +89,22 @@ class ViewportWidgetTest < Minitest::Test
   end
 
   def test_focus_at_0_0_renders_0_0_to_2_2
-    @world.expects(:width).returns(20)
-    @world.expects(:height).returns(100)
+    @world.stubs(:width).returns(20)
+    @world.stubs(:height).returns(100)
     expect_world 0, 0, 2, 2
     expect_draw 1, 1, 3, 3
 
     @viewport.focus 0, 0
+    @viewport.draw @display
+  end
+
+  def test_focus_at_99_99_renders_97_97_to_99_99
+    @world.stubs(:width).returns(100)
+    @world.stubs(:height).returns(100)
+    expect_world 97, 97, 99, 99
+    expect_draw 1, 1, 3, 3
+
+    @viewport.focus 99, 99
     @viewport.draw @display
   end
 

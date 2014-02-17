@@ -23,6 +23,11 @@ class ViewportWidget
 
     @rx = 0 if @rx < 0
     @ry = 0 if @ry < 0
+    
+    far_east = @world.width - @width
+    far_south = @world.height - @height
+    @rx = far_east if @rx > far_east
+    @ry = far_south if @ry > far_south
   end
 
   def draw(display)
