@@ -31,7 +31,7 @@ Roadmap
 * Move collision component into library [DONE]
 * Make move component check for collisions [DONE]
 * Center menu widget [DONE]
-* Viewport widget
+* Viewport widget [DONE]
 
 **v0.0.3**
 
