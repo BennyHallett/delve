@@ -80,11 +80,15 @@ class RogueGenerator < Map
       loop do
         found = false
         idx = dir_to_check.sample
+        break if idx.nil?
         dir_to_check.delete idx
 
         new_cgx = determine_ncgx(idx)
         ncgx = cgx + new_cgx[:x]
         ncgy = cgx + new_cgx[:y]
+
+        next if ncgx < 0 or ncgx >= @options[:cell_width]-1
+        next if ncgy < 0 or ncgy >= @options[:cell_height]-1
 
         room = @rooms[cgx][cgy]
 
@@ -94,7 +98,11 @@ class RogueGenerator < Map
           end
         end
 
-        other_room = @rooms[ncgx][ncgy]
+        begin
+          other_room = @rooms[ncgx][ncgy]
+        rescue
+          raise "ncgx: #{ncgx}, ncgy: #{ncgy}, rooms: #{@rooms.length}"
+        end
 
         if other_room and other_room[:connections].length == 0
           other_room[:connections] << [cgx, cgy]
@@ -105,10 +113,10 @@ class RogueGenerator < Map
           found = true
         end
 
-        break if dir_to_check.length < 0 or found
+        break if dir_to_check.length <= 0 || found
       end
 
-      break if dir_to_check.length < 0
+      break if dir_to_check.length <= 0
     end
   end
 
@@ -135,9 +143,10 @@ class RogueGenerator < Map
           loop do
 
             dir_idx = directions.sample
+            break if dir_idx.nil?
             directions.delete dir_idx
 
-            ncgx = determine_ncgx
+            ncgx = determine_ncgx dir_idx
             new_i = i + ncgx[:x]
             new_j = j + ncgx[:y]
 
@@ -145,7 +154,7 @@ class RogueGenerator < Map
               next
             end
 
-            other_room = @rooms[:new_i][:new_j]
+            other_room = @rooms[new_i][new_j]
 
             valid_room = true
 
@@ -219,7 +228,7 @@ class RogueGenerator < Map
         end
 
         while sy + sy_offset + roomh >= h
-          if xy_offset > 0
+          if sy_offset > 0
             sy_offset -= 1
           else
             roomh -= 1

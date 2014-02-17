@@ -4,9 +4,9 @@ require 'delve/display/display'
 
 display = Display.new CursesRenderer.new
 
-rogue = RogueGenerator.new 10, 10
+rogue = RogueGenerator.new 100, 40
 rogue.generate do |x, y, value|
-  display.draw(x, y, value)
+  display.draw(x, y, value.to_s)
 end
 display.render
 
