@@ -15,22 +15,23 @@ Roadmap
 * Non-Corridor Dungeon Renderer
 * StatusBar widget
 * KeyValue widget
-* Viewport widget
-* Speed Scheduler
+* Name generator
+  - Fantasy
+  - SciFi
+*  Speed Scheduler
 
 **v0.0.4**
 
 * One command roguelike
   * delve mygame -g dungeon -r curses
-* Dungeon renderer
+* Rogue generator
+* Cellular Automata generator [DONE]
 * Simple Scheduler
 * Travis CI builds
 * Move collision component into library [DONE]
 * Make move component check for collisions [DONE]
 * Center menu widget [DONE]
-* Name generator
-  - Fantasy
-  - SciFi
+* Viewport widget
 
 **v0.0.3**
 
