@@ -4,7 +4,7 @@ require 'delve/display/display'
 
 display = Display.new CursesRenderer.new
 
-cellular = CellularGenerator.new 80, 24
+cellular = CellularGenerator.new 120, 36
 cellular.generate do |x, y, value|
   display.draw(x, y, value == 1 ? '#' : '.')
 end

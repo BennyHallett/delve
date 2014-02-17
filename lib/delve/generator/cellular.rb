@@ -34,6 +34,7 @@ class CellularGenerator < Map
 
   def generate
     new_map = fill 0
+    randomize 0.45
     born = @options[:born]
     survive = @options[:survive]
 
@@ -49,9 +50,9 @@ class CellularGenerator < Map
         curr = @map[i][j]
         ncount = get_neighbours i, j
 
-        if curr > 0 and survive.index(ncount) != -1
+        if curr > 0 and survive.index(ncount) != nil
           new_map[i][j] = 1
-        elsif curr <= 0 and born.index(ncount) != -1
+        elsif curr <= 0 and born.index(ncount) != nil
           new_map[i][j] = 1
         end
 
@@ -65,12 +66,11 @@ class CellularGenerator < Map
   private
   def get_neighbours cx, cy
     result = 0
-    (0..@dirs.length - 1).each do |i|
-      dir = @dirs[i]
+    @dirs.each do |dir|
       x = cx + dir[0]
       y = cy + dir[1]
       
-      next if x < 0 or x >= @width or y < 0 or y >= @height
+      next if x < 0 or x >= (@width - 1) or y < 0 or y >= (@height - 1)
       result += @map[x][y] == 1 ? 1 :0
     end
 

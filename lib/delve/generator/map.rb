@@ -18,10 +18,10 @@ class Map
 
   def fill(value)
     map = Array.new
-    (0..@height-1).each do |y|
+    (0..@width-1).each do |x|
       map << Array.new
-      (0..@width-1).each do
-        map[y] << value
+      (0..@height-1).each do
+        map[x] << value
       end
     end
     map
