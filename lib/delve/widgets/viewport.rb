@@ -20,6 +20,9 @@ class ViewportWidget
 
     @rx = x - (@width/2).floor
     @ry = y - (@height/2).floor
+
+    @rx = 0 if @rx < 0
+    @ry = 0 if @ry < 0
   end
 
   def draw(display)
