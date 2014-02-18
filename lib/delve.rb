@@ -11,6 +11,15 @@ class Delve
     @generators = [:noise, :rogue, :cellular]
     @renderer = :curses
     @generator = :rogue
+
+    @statements = {
+      :curses => {
+        :renderer     => 'delve/renderer/curses',
+        :input        => 'delve/input/curses',
+        :new_renderer => 'CursesRenderer.new',
+        :new_input    => 'CursesInput.new'
+      }
+    }
   end
 
   def use_renderer(renderer)
@@ -37,9 +46,19 @@ class Delve
     @base_path = File.join(path, @name).to_s
     create_directories
     create_gem_files
+    create_bin_file
   end
 
   private
+  def create_bin_file
+    @renderer_import        = @statements[@renderer][:renderer]
+    @input_import           = @statements[@renderer][:input]
+    @new_renderer_statement = @statements[@renderer][:new_renderer]
+    @new_input_statement    = @statements[@renderer][:new_input]
+
+    create_file_from_template 'binfile.erb', "bin/#{@name}.rb"
+  end
+
   def create_gem_files
     create_file_from_template 'Gemfile.erb', 'Gemfile'
     create_file_from_template 'gemspec.erb', "#{@name}.gemspec"

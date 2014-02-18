@@ -1,0 +1,21 @@
+#!/usr/bin/env ruby
+require 'delve/display/curses_renderer'
+require '<%= @renderer_import %>'
+require 'delve/display/display'
+require 'delve/input/input'
+require '<%= @input_import %>'
+require 'delve/screen_manager'
+require 'delve/game'
+
+require '<%= @name %>/screens/title'
+
+display = Display.new <%= @new_renderer_statement %>
+screen_manager = ScreenManager.new
+title_screen = TitleScreen.new screen_manager
+screen_manager.push_screen title_screen
+input = Input.new <%= @new_input_statement %>
+
+game = Game.new display, screen_manager, input
+game.start
+
+display.exit
