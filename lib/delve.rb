@@ -1,3 +1,5 @@
+require 'fileutils'
+
 class Delve
 
   def initialize(name)
@@ -26,6 +28,21 @@ class Delve
 
   def generator
     @generator
+  end
+
+  def create_game path
+    raise "Cannot create roguelike when path already exists: #{path}/#{@name}" if Dir.exist?("#{path}/#{@name}")
+
+    @base_path = File.join(path, @name).to_s
+    create_directories
+  end
+
+  private
+  def create_directories
+    FileUtils.mkdir(@base_path)
+    FileUtils.mkdir(@base_path + '/bin')
+    FileUtils.mkdir(@base_path + '/lib')
+    FileUtils.mkdir(@base_path + '/lib/' + @name)
   end
 
 end
