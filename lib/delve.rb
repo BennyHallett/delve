@@ -41,10 +41,16 @@ class Delve
 
   private
   def create_gem_files
+    create_file_from_template 'Gemfile.erb', 'Gemfile'
+    create_file_from_template 'gemspec.erb', "#{@name}.gemspec"
+    create_file_from_template 'README.md.erb', "README.md"
+  end
+
+  def create_file_from_template(template_name, target)
     dir = File.expand_path(File.dirname(__FILE__))
-    gemfile_content = File.read(File.join(dir, '../templates/Gemfile.erb'))
-    erb = ERB.new gemfile_content
-    File.open(File.join(@base_path, 'Gemfile'), 'w') do |file|
+    content = File.read(File.join(dir, "../templates/#{template_name}"))
+    erb = ERB.new content
+    File.open(File.join(@base_path, target), 'w') do |file|
       file.write erb.result(binding)
     end
   end
