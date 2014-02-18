@@ -1,4 +1,5 @@
 require 'fileutils'
+require 'erb'
 
 class Delve
 
@@ -35,9 +36,19 @@ class Delve
 
     @base_path = File.join(path, @name).to_s
     create_directories
+    create_gem_files
   end
 
   private
+  def create_gem_files
+    dir = File.expand_path(File.dirname(__FILE__))
+    gemfile_content = File.read(File.join(dir, '../templates/Gemfile.erb'))
+    erb = ERB.new gemfile_content
+    File.open(File.join(@base_path, 'Gemfile'), 'w') do |file|
+      file.write erb.result(binding)
+    end
+  end
+
   def create_directories
     FileUtils.mkdir(@base_path)
     FileUtils.mkdir(@base_path + '/bin')
