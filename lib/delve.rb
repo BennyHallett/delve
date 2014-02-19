@@ -58,6 +58,7 @@ class Delve
   private
   def create_game_classes
     create_file_from_template 'world.rb.erb', "lib/#{@name}/world.rb"
+    create_file_from_template 'player_factory.rb.erb', "lib/#{@name}/factory/player.rb"
   end
 
   def create_screens
@@ -98,6 +99,7 @@ class Delve
     FileUtils.mkdir(@base_path + '/lib')
     FileUtils.mkdir(@base_path + '/lib/' + @name)
     FileUtils.mkdir(@base_path + '/lib/' + @name + '/screens')
+    FileUtils.mkdir(@base_path + '/lib/' + @name + '/factory')
   end
 
 end
