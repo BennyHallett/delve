@@ -19,15 +19,17 @@ Roadmap
   - Fantasy
   - SciFi
 *  Speed Scheduler
+* Simple Scheduler
+* Travis CI builds
+* Command line takes params
+  * delve mygame -g dungeon -r curses
+* Use viewport in game generator
 
 **v0.0.4**
 
-* One command roguelike
-  * delve mygame -g dungeon -r curses
+* One command roguelike [DONE]
 * Rogue generator
 * Cellular Automata generator [DONE]
-* Simple Scheduler
-* Travis CI builds
 * Move collision component into library [DONE]
 * Make move component check for collisions [DONE]
 * Center menu widget [DONE]
