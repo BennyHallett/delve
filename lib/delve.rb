@@ -10,14 +10,18 @@ class Delve
     @renderers = [:curses]
     @generators = [:noise, :rogue, :cellular]
     @renderer = :curses
-    @generator = :rogue
+    @generator = :noise
 
     @statements = {
       :curses => {
-        :renderer     => 'delve/renderer/curses',
-        :input        => 'delve/input/curses',
-        :new_renderer => 'CursesRenderer.new',
-        :new_input    => 'CursesInput.new'
+        :renderer       => 'delve/renderer/curses',
+        :input          => 'delve/input/curses',
+        :new_renderer   => 'CursesRenderer.new',
+        :new_input      => 'CursesInput.new'
+      },
+      :noise => {
+        :generator      => 'delve/generator/noise',
+        :new_generator  => 'NoiseGenerator.new(256, 128, :fine)'
       }
     }
   end
@@ -47,9 +51,23 @@ class Delve
     create_directories
     create_gem_files
     create_bin_file
+    create_screens
+    create_game_classes
   end
 
   private
+  def create_game_classes
+    create_file_from_template 'world.rb.erb', "lib/#{@name}/world.rb"
+  end
+
+  def create_screens
+    @generator_import       = @statements[@generator][:generator]
+    @new_generator          = @statements[@generator][:new_generator]
+    create_file_from_template 'title_screen.rb.erb', "lib/#{@name}/screens/title.rb"
+    create_file_from_template 'loading_screen.rb.erb', "lib/#{@name}/screens/loading.rb"
+    create_file_from_template 'game_screen.rb.erb', "lib/#{@name}/screens/game.rb"
+  end
+
   def create_bin_file
     @renderer_import        = @statements[@renderer][:renderer]
     @input_import           = @statements[@renderer][:input]
@@ -79,6 +97,7 @@ class Delve
     FileUtils.mkdir(@base_path + '/bin')
     FileUtils.mkdir(@base_path + '/lib')
     FileUtils.mkdir(@base_path + '/lib/' + @name)
+    FileUtils.mkdir(@base_path + '/lib/' + @name + '/screens')
   end
 
 end

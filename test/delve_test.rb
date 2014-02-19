@@ -51,6 +51,9 @@ class DelveTest < Minitest::Test
     FileUtils.expects(:mkdir).with(@full_path + '/bin')
     FileUtils.expects(:mkdir).with(@full_path + '/lib')
     FileUtils.expects(:mkdir).with(@full_path + '/lib/' + @name)
+    FileUtils.expects(:mkdir).with(@full_path + '/lib/' + @name + '/screens')
+
+    #TODO: test all files
 
     @delve.create_game @base_path
   end
