@@ -8,13 +8,14 @@ class RogueGenerator < Map
     @options = {
       :cell_width => 3,
       :cell_height => 3,
-      :room_width => 3,
-      :room_height => 3
     }
 
     opts.keys.each do |key|
       @options[key] = opts[key]
     end
+
+    @options[:room_width] ||= calculate_room_size width, @options[:cell_width]
+    @options[:room_height] ||= calculate_room_size height, @options[:cell_height]
   end
 
   def generate
@@ -26,7 +27,7 @@ class RogueGenerator < Map
     connect_rooms
     connect_unconnected_rooms
     create_rooms
-    #create_corridors
+    create_corridors
 
     if block_given?
       (0..@map.length-1).each do |x|
@@ -139,6 +140,7 @@ class RogueGenerator < Map
         if room[:connections].length == 0
           directions = [0, 2, 4, 6]
           valid_room = false
+          other_room = nil
 
           loop do
 
@@ -188,6 +190,8 @@ class RogueGenerator < Map
 
     cwp = (w / cw).floor
     chp = (h / ch).floor
+
+    roomw, roomh, sx, sy, tx, ty, other_room = nil
 
     room_width = @options[:room_width]
     room_height = @options[:room_height]
@@ -252,20 +256,147 @@ class RogueGenerator < Map
     end
   end
 
+  def get_wall_position(room, direction)
+    rx = nil
+    ry = nil
+    door = nil
 
+    if direction == 1 || direction == 3
+      rx = random_int(room[:x] + 1, room[:x] + room[:width] + 1)
+      if direction == 1
+        ry = room[:y] - 2
+        door = ry + 1
+      else
+        ry = room[:y] + room[:height] + 1
+        door = ry - 1
+      end
 
+      @map[rx][door] = 0 #TODO: Should return a door tile
+    elsif direction == 2 || direction == 4
+      if direction == 2
+        rx = room[:x] + room[:width] + 1
+        door = rx - 1
+      else
+        rx = room[:x] - 2
+        door = rx + 1
+      end
 
+      @map[door][ry] = 0
+    end
 
+    [rx, ry]
+  end
 
+  def draw_corridor(start_pos, end_pos)
+    x_offset = end_pos[0] - start_pos[0]
+    y_offset = end_pos[1] - start_pos[1]
 
+    xpos = start_pos[0]
+    ypos = start_pos[1]
 
+    temp_dist, xdir, ydir = nil
 
+    move = nil
+    moves = Array.new
 
+    xabs = x_offset.abs
+    yabs = y_offset.abs
 
+    percent = rand
+    first_half = percent
+    second_half = 1 - percent
 
+    xdir = x_offset > 0 ? 2 : 6
+    ydir = y_offset > 0 ? 4 : 0
 
+    if xabs < yabs
+      temp_dist = (yabs * first_half).ceil
+      moves << [ydir, temp_dist]
+      moves << [xdir, xabs]
+      temp_dist = (yabs * second_half).floor
+      moves << [ydir, temp_dist]
+    else
+      temp_dist = (xabs * first_half).ceil
+      moves << [xdir, temp_dist]
+      moves << [ydir, yabs]
+      temp_dist = (xabs * second_half).floor
+      moves << [xdir, temp_dist]
+    end
 
+    @map[xpos][ypos] = 0;
 
+    while moves.length > 0
+      move = moves.pop
+      while move[1] > 0
+        xpos += directions(:eight)[move[0]][0]
+        ypos += directions(:eight)[move[0]][1]
+        @map[xpos][ypos] = 0
+        move[1] = move[1] - 1
+      end
+    end
+  end
 
+  def create_corridors
+    cw = @options[:cell_width]
+    ch = @options[:cell_height]
+    room, connection, other_room, wall, other_wall = nil
+
+    (0..cw - 1).each do |i|
+      (0..ch - 1).each do |j|
+        room = @rooms[i][j]
+
+        room[:connections].each do |connection|
+          other_room = @rooms[connection[0]][connection[1]]
+
+          if other_room[:cell_x] > room[:cell_x]
+            wall = 2
+            other_wall = 4
+          elsif other_room[:cell_x] < room[:cell_x]
+            wall = 4
+            other_wall = 2
+          elsif other_room[:cell_y] > room[:cell_y]
+            wall = 3
+            other_wall = 1
+          elsif other_room[:cell_y] < room[:cell_y]
+            wall = 1
+            other_wall = 3
+          end
+          
+          draw_corridor get_wall_position(room, wall), get_wall_position(other_room, other_wall)
+        end
+      end
+    end
+  end
+
+  def directions(v)
+    dirs = {
+      :four => [
+        [ 0, -1],
+        [ 1,  0],
+        [ 0,  1],
+        [-1,  0]
+      ],
+      :eight => [
+        [ 0, -1],
+        [ 1, -1],
+        [ 1,  0],
+        [ 1,  1],
+        [ 0,  1],
+        [-1,  1],
+        [-1,  0],
+        [-1, -1]
+      ],
+      :six => [
+        [-1, -1],
+        [ 1, -1],
+        [ 2,  0],
+        [ 1,  1],
+        [-1,  1],
+        [-2,  0]
+      ]
+    }
+
+    dirs[v]
+  end
 
 end

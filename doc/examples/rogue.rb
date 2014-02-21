@@ -6,7 +6,7 @@ display = Display.new CursesRenderer.new
 
 rogue = RogueGenerator.new 100, 40
 rogue.generate do |x, y, value|
-  display.draw(x, y, value.to_s)
+  display.draw(x, y, value == 1 ? '#' : '.')
 end
 display.render
 
