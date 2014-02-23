@@ -28,7 +28,7 @@ Roadmap
 **v0.0.4**
 
 * One command roguelike [DONE]
-* Rogue generator
+* Rogue generator [DONE]
 * Cellular Automata generator [DONE]
 * Move collision component into library [DONE]
 * Make move component check for collisions [DONE]
