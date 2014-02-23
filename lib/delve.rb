@@ -10,7 +10,7 @@ class Delve
     @renderers = [:curses]
     @generators = [:noise, :rogue, :cellular]
     @renderer = :curses
-    @generator = :noise
+    @generator = :rogue
 
     @statements = {
       :curses => {
@@ -22,6 +22,10 @@ class Delve
       :noise => {
         :generator      => 'delve/generator/noise',
         :new_generator  => 'NoiseGenerator.new(256, 128, :fine)'
+      },
+      :rogue => {
+        :generator      => 'delve/generator/rogue',
+        :new_generator  => 'RogueGenerator.new(256, 128)'
       }
     }
   end
