@@ -262,7 +262,7 @@ class RogueGenerator < Map
     door = nil
 
     if direction == 1 || direction == 3
-      rx = random_int(room[:x] + 1, room[:x] + room[:width] + 1)
+      rx = random_int(room[:x] + 1, room[:x] + room[:width] - 2)
       if direction == 1
         ry = room[:y] - 2
         door = ry + 1
@@ -273,6 +273,7 @@ class RogueGenerator < Map
 
       @map[rx][door] = 0 #TODO: Should return a door tile
     elsif direction == 2 || direction == 4
+      ry = random_int(room[:y] + 1, room[:y] + room[:height] - 2)
       if direction == 2
         rx = room[:x] + room[:width] + 1
         door = rx - 1
