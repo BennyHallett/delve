@@ -14,8 +14,8 @@ class Delve
 
     @statements = {
       :curses => {
-        :renderer       => 'delve/renderer/curses',
-        :input          => 'delve/input/curses',
+        :renderer       => 'delve/display/curses_renderer',
+        :input          => 'delve/input/curses_input',
         :new_renderer   => 'CursesRenderer.new',
         :new_input      => 'CursesInput.new'
       },
