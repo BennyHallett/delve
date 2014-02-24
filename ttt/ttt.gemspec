@@ -3,20 +3,15 @@ lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
-  spec.name          = "<%= @name %>"
+  spec.name          = "ttt"
   spec.version       = '0.0.1'
   spec.authors       = ["roguelike-developer"]
-  spec.description   = %q{A roguelike named <%= @name %>}
-  spec.summary       = %q{<%= @name %>}
+  spec.description   = %q{A roguelike named ttt}
+  spec.summary       = %q{ttt}
 
-  spec.files         = %w(
-bin/<%= @name %>
-lib/<%= @name %>/world.rb
-lib/<%= @name %>/factory/player.rb
-lib/<%= @name %>/screens/game.rb
-lib/<%= @name %>/screens/loading.rb
-lib/<%= @name %>/screens/title.rb
-  )
+  spec.files         = [
+    ''
+  ]
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 

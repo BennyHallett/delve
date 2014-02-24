@@ -79,7 +79,7 @@ class Delve
     @new_renderer_statement = @statements[@renderer][:new_renderer]
     @new_input_statement    = @statements[@renderer][:new_input]
 
-    create_file_from_template 'binfile.erb', "bin/#{@name}.rb"
+    create_file_from_template 'binfile.erb', "bin/#{@name}"
   end
 
   def create_gem_files
