@@ -25,6 +25,7 @@ Roadmap
 * Blog post
 * Reddit post
 * Twitter post
+* Make it work with both Ruby 1.9.3 and 2.x
 
 **v0.0.6**
 
