@@ -21,11 +21,11 @@ class Delve
       },
       :noise => {
         :generator      => 'delve/generator/noise',
-        :new_generator  => 'NoiseGenerator.new(256, 128, :fine)'
+        :new_generator  => 'NoiseGenerator.new(128, 64, :fine)'
       },
       :rogue => {
         :generator      => 'delve/generator/rogue',
-        :new_generator  => 'RogueGenerator.new(256, 128)'
+        :new_generator  => 'RogueGenerator.new(128, 64)'
       }
     }
   end

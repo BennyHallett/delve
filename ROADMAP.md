@@ -12,18 +12,28 @@ Roadmap
 
 **v0.1.0**
 
-* Non-Corridor Dungeon Renderer
 * StatusBar widget
-* KeyValue widget
 * Name generator
   - Fantasy
   - SciFi
-*  Speed Scheduler
-* Simple Scheduler
+* Speed Scheduler
 * Travis CI builds
 * Command line takes params
   * delve mygame -g dungeon -r curses
+
+**v0.0.6**
+
+* Simple Scheduler
+* Use engine in game
+* KeyValue widget
+
+**v0.0.5**
+
 * Use viewport in game generator
+* Place player on a walkable location
+* Viewport has render_from, width, height, and relative_focus properties
+
+========================================================================
 
 **v0.0.4**
 
