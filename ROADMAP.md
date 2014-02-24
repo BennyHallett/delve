@@ -20,6 +20,11 @@ Roadmap
 * Travis CI builds
 * Command line takes params
   * delve mygame -g dungeon -r curses
+* Documentation on bennyhallett.github.io/delve
+* Tutorial on rogue basin
+* Blog post
+* Reddit post
+* Twitter post
 
 **v0.0.6**
 
