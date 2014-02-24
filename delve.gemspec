@@ -6,8 +6,10 @@ Gem::Specification.new do |g|
   g.description = 'Roguelike library inspired by rot.js and libtcod'
   g.authors     = ['Benny Hallett']
   g.files       = `git ls-files`.split($/)
+  g.bindir      = 'bin'
+  g.executables << 'delve'
   g.homepage    = 'http://bennyhallett.com/delve'
-  g.license    = 'BSD'
+  g.license     = 'BSD'
   g.add_development_dependency('rake')
   g.add_development_dependency('minitest')
   g.add_development_dependency('mocha')
