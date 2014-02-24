@@ -108,6 +108,32 @@ class ViewportWidgetTest < Minitest::Test
     @viewport.draw @display
   end
 
+  def test_focus_at_0_0_puts_top_left_at_0_0
+    @world.stubs(:width).returns(100)
+    @world.stubs(:height).returns(100)
+
+    @viewport.focus 0, 0
+    assert_equal 0, @viewport.top_left[:x]
+    assert_equal 0, @viewport.top_left[:y]
+  end
+
+  def test_focus_at_99_99_puts_top_left_at_97_97
+    @world.stubs(:width).returns(100)
+    @world.stubs(:height).returns(100)
+
+    @viewport.focus 99, 99
+    assert_equal 97, @viewport.top_left[:x]
+    assert_equal 97, @viewport.top_left[:y]
+  end
+
+  def test_width
+    assert_equal @width, @viewport.width
+  end
+
+  def test_height
+    assert_equal @height, @viewport.height
+  end
+
   private
   def expect_world(sx, sy, ex, ey)
     (sx..ex).each do |x|

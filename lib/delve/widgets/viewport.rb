@@ -15,6 +15,14 @@ class ViewportWidget
     @ry = 0
   end
 
+  def width
+    @width
+  end
+
+  def height
+    @height
+  end
+
   def focus(x, y)
     raise 'Cannot focus viewport out of world' if x < 0 || y < 0 || x >= @world.width || y >= @world.height
 
@@ -42,5 +50,9 @@ class ViewportWidget
       end
       dx += 1
     end
+  end
+
+  def top_left
+    { x: @rx, y: @ry }
   end
 end
