@@ -45,7 +45,11 @@ class CursesRenderer
     index = @pairs.index(pair)+1
     Curses.setpos(y, x)
     Curses.attron(Curses.color_pair(index)) do
-      Curses.addstr(char)
+      begin
+        Curses.addstr(char)
+      rescue TypeError => e
+        raise 'The char was ' + char.to_s
+      end
     end
   end
 

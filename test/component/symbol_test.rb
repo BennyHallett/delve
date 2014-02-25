@@ -24,7 +24,7 @@ class SymbolComponentTest < Minitest::Test
   end
 
   def test_get_symbol
-    assert_equal @symbol, @component.symbol
+    assert_equal({ :char => @symbol, :color => :white, :walkable => false }, @component.symbol)
   end
 
 end
