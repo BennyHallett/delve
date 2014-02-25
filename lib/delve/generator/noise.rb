@@ -1,6 +1,7 @@
 require 'perlin_noise'
+require 'delve/generator/map'
 
-class Noise
+class Noise < Map
 
   @@grains = {
     :fine => 0.03,
@@ -13,8 +14,8 @@ class Noise
     raise 'Cannot initialize noise generator when grain is not defined' unless grain
     raise 'Cannot initialize noise generator with unknown grain' unless @@grains.include?(grain)
 
-    @width = width
-    @height = height
+    super width, height
+
     @grain = @@grains[grain]
     @inverse = 1/@grain
   end
