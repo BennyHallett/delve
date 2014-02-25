@@ -45,7 +45,8 @@ class ViewportWidget
     (@x..(@x+@width-1)).each do |x|
       dy = 0
       (@y..(@y+@height-1)).each do |y|
-        display.draw x, y, @world.at(@rx+dx, @ry+dy)
+        tile = @world.at(@rx+dx, @ry+dy)
+        display.draw x, y, tile[:char], tile[:color]
         dy += 1
       end
       dx += 1

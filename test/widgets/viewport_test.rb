@@ -138,7 +138,7 @@ class ViewportWidgetTest < Minitest::Test
   def expect_world(sx, sy, ex, ey)
     (sx..ex).each do |x|
       (sy..ey).each do |y|
-        @world.expects(:at).with(x, y).returns('.')
+        @world.expects(:at).with(x, y).returns({ :char => '.', :color => :white, :walkable => true })
       end
     end
   end
@@ -146,7 +146,7 @@ class ViewportWidgetTest < Minitest::Test
   def expect_draw(sx, sy, ex, ey)
     (sx..ex).each do |x|
       (sy..ey).each do |y|
-        @display.expects(:draw).with(x, y, '.')
+        @display.expects(:draw).with(x, y, '.', :white)
       end
     end
   end
