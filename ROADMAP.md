@@ -38,6 +38,7 @@ Roadmap
 * Use viewport in game generator
 * Place player on a walkable location
 * Viewport has top_left, width, height properties [DONE]
+* Symbol component
 
 ========================================================================
 
