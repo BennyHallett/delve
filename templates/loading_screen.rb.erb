@@ -11,6 +11,8 @@ class LoadingScreen
     @manager = screen_manager
     @text = TextWidget.new :center, :center, 'Creating world (this may take a while)'
     @player_factory = PlayerFactory.new
+    @player = nil
+    @world = nil
   end
 
   def render(display)
@@ -22,10 +24,23 @@ class LoadingScreen
   end
 
   def update(input)
-    world = World.new(<%= @new_generator %>)
-    player = @player_factory.create
-    @manager.push_screen GameScreen.new(world, player, @manager)
+    @world = World.new(<%= @new_generator %>)
+    @player = @player_factory.create @world
+    @manager.push_screen GameScreen.new(@world, @player, @manager)
     false
+  end
+
+  private
+  def randomize_player_location
+    rx = (rand * @world.width).floor
+    ry = (rand * @world.height).floor
+
+    while !@world.free(rx, ry)
+      rx = (rand * @world.width).floor
+      ry = (rand * @world.height).floor
+    end
+
+    @player.get(:position).set(rx, ry)
   end
 
 end

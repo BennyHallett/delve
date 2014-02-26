@@ -4,13 +4,45 @@ class World
     raise 'Cannot create world when generator is nil' unless generator
 
     @world = Hash.new
+    @entities = Array.new
+    @width = generator.width
+    @height = generator.height
     generator.generate do |x, y, height|
       @world[key_for(x.floor, y.floor)] = tile_for_height(height)
     end
   end
 
   def at(x, y)
-    @world[key_for(x, y)]
+    key = key_for(x, y)
+    # This is super inefficient
+    found = @entities.select { |e| e.get(:position).x == x and e.get(:position).y == y }
+    entity = found.first
+    if entity and entity.has?(:symbol)
+      return entity.get(:symbol).symbol
+    else
+      return @world[key_for(x, y)]
+    end
+  end
+
+  def entities
+    @entities
+  end
+
+  def add_entity(entity)
+    raise 'Cannot add entity that doesnt have a position' unless entity.has? :position
+    @entities << entity
+  end
+
+  def width
+    @width
+  end
+
+  def height
+    @height
+  end
+
+  def free(x, y)
+    at(x, y)[:walkable]
   end
 
   private
@@ -19,15 +51,13 @@ class World
   end
 
   def tile_for_height(height)
-    v = (height * 10).floor
+    v = (height).floor
     t = '.'
-    t = '#' if v > 5
+    t = '#' if v == 1
 
     c = :white
-    c = :red if v > 5
 
-    { char: t, color: c, walkable: v <= 5 }
+    { char: t, color: c, walkable: (t == '.') }
   end
 
 end
-

@@ -26,6 +26,7 @@ Roadmap
 * Reddit post
 * Twitter post
 * Make it work with both Ruby 1.9.3 and 2.x
+* fix bug when rogue generator renders on large terminal
 
 **v0.0.6**
 
@@ -33,14 +34,14 @@ Roadmap
 * Use engine in game
 * KeyValue widget
 
+========================================================================
+
 **v0.0.5**
 
-* Use viewport in game generator
-* Place player on a walkable location
+* Use viewport in game generator [DONE]
+* Place player on a walkable location [DONE]
 * Viewport has top_left, width, height properties [DONE]
 * Symbol component [DONE]
-
-========================================================================
 
 **v0.0.4**
 

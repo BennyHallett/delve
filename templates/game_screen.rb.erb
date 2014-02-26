@@ -1,4 +1,5 @@
 require 'delve/widgets/border'
+require 'delve/widgets/viewport'
 
 class GameScreen
 
@@ -8,25 +9,23 @@ class GameScreen
     @player = player
     @boundary = nil
     @game_border = nil
+    @viewport = nil
+
+    @world.add_entity @player
   end
 
   def render(display)
     @boundary ||= BorderWidget.new(0, 0, display.width, display.height)
     @game_border ||= BorderWidget.new(0, 0, display.width - 25, display.height, '<%= @name %>', :white, :black)
+    @viewport ||= ViewportWidget.new 2, 1, display.width - 28, display.height - 2, @world
 
     @boundary.draw display
     @game_border.draw display
 
-    (2..display.width-28).each do |x|
-      (1..display.height-2).each do |y|
-        tile = @world.at(x, y)
-        display.draw(x, y, tile[:char], tile[:color], :black)
-      end
-    end
-
     x = @player.get(:position).x
     y = @player.get(:position).y
-    display.draw x+2, y+1, '@'
+    @viewport.focus(x, y)
+    @viewport.draw display
   end
 
   def partial?

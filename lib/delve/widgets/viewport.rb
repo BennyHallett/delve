@@ -46,6 +46,7 @@ class ViewportWidget
       dy = 0
       (@y..(@y+@height-1)).each do |y|
         tile = @world.at(@rx+dx, @ry+dy)
+        tile = { :char => '?', :color => :red } unless tile
         display.draw x, y, tile[:char], tile[:color]
         dy += 1
       end
