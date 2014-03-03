@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    delve (0.0.1)
+    delve (0.0.5)
       perlin_noise
 
 GEM

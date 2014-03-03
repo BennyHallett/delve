@@ -12,30 +12,30 @@ Roadmap
 
 **v0.1.0**
 
-* Name generator
-  - Fantasy
-  - SciFi
-* Travis CI builds
-* Command line takes params
-  * delve mygame -g dungeon -r curses -s scheduler
 * Documentation on bennyhallett.github.io/delve
 * Tutorial on rogue basin
 * Blog post
 * Reddit post
 * Twitter post
 * Make it work with both Ruby 1.9.3 and 2.x
-* fix bug when rogue generator renders on large terminal
 
 **v0.0.7**
 
-* Simple Scheduler
-* Speed Scheduler
-* Use engine in game
+* Travis CI builds
+* fix bug when rogue generator renders on large terminal
+* Name generator
+  - Fantasy
+  - SciFi
 
 **v0.0.6**
 
-* KeyValue widget
+* Simple Scheduler
+* Use engine in game gen
+* Speed Scheduler
 * StatusBar widget
+* KeyValue widget
+* Command line takes params
+  * delve mygame -g dungeon -r curses -s scheduler
 
 ========================================================================
 
