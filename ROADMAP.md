@@ -32,7 +32,7 @@ Roadmap
 * Simple Scheduler
 * Use engine in game gen
 * Speed Scheduler
-* Progress widget
+* Progress widget [Done]
 * KeyValue widget [Done]
 * Command line takes params
   * delve mygame -g dungeon -r curses -s scheduler

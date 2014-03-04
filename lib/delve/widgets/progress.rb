@@ -1,5 +1,5 @@
 class ProgressWidget
-  attr_accessor :current
+  attr_accessor :current, :max
   
   def initialize(x, y, width, current, max, fg, bg)
     raise 'Cannot initialize progress widget when x is nil' unless x
@@ -22,7 +22,7 @@ class ProgressWidget
   def draw(display)
     raise 'Cannot draw text when display is nil' unless display
 
-    percent = @current / @max * 100.0
+    percent = 1.0 * @current / @max
     to_fill = (percent * @width).ceil
 
     x = @x

@@ -73,4 +73,24 @@ class ProgressWidgetTest < Minitest::Test
     @display.expects(:draw).with(5, 1, ' ', @fg, @fg)
     @widget.draw(@display)
   end
+
+  def test_partially_full
+    @widget.current = 6
+    @display.expects(:draw).with(1, 1, ' ', @fg, @fg)
+    @display.expects(:draw).with(2, 1, ' ', @fg, @fg)
+    @display.expects(:draw).with(3, 1, ' ', @fg, @fg)
+    @display.expects(:draw).with(4, 1, ' ', @bg, @bg)
+    @display.expects(:draw).with(5, 1, ' ', @bg, @bg)
+    @widget.draw(@display)
+  end
+
+  def test_set_current_value
+    @widget.current = 2
+    assert_equal 2, @widget.current
+  end
+
+  def test_set_max_value
+    @widget.max = 100
+    assert_equal 100, @widget.max
+  end
 end
