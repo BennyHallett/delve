@@ -16,4 +16,8 @@ class Entity
     return nil unless has?(component_id)
     @components[component_id]
   end
+
+  def act
+    get(:actor).act if has?(:actor)
+  end
 end

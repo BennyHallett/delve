@@ -37,4 +37,12 @@ class EntityTest < Minitest::Test
     assert_equal @component, @entity.get(:position)
   end
 
+  def test_act
+    @component.stubs(:id).returns(:actor)
+    @component.expects(:act)
+    @entity.add @component
+    
+    @entity.act
+  end
+
 end
