@@ -22,6 +22,7 @@ Roadmap
 **v0.0.7**
 
 * Speed Scheduler
+* Use engine in game gen
 * Travis CI builds
 * fix bug when rogue generator renders on large terminal
 * Name generator
@@ -30,14 +31,13 @@ Roadmap
 * Command line takes params
   * delve mygame -g dungeon -r curses -s scheduler
 
+========================================================================
+
 **v0.0.6**
 
 * Simple Scheduler [Done]
-* Use engine in game gen
 * Progress widget [Done]
 * KeyValue widget [Done]
-
-========================================================================
 
 **v0.0.5**
 
