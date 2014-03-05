@@ -32,7 +32,7 @@ Roadmap
 
 **v0.0.6**
 
-* Simple Scheduler
+* Simple Scheduler [Done]
 * Use engine in game gen
 * Progress widget [Done]
 * KeyValue widget [Done]
