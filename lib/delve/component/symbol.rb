@@ -12,6 +12,11 @@ class SymbolComponent
     :symbol
   end
 
+  def update(symbol, color=:white)
+    @symbol = symbol
+    @color = color
+  end
+
   def symbol
     { :char => @symbol, :color => @color }
   end
