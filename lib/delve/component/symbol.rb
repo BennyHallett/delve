@@ -13,6 +13,6 @@ class SymbolComponent
   end
 
   def symbol
-    { :char => @symbol, :color => @color, :walkable => false }
+    { :char => @symbol, :color => @color }
   end
 end

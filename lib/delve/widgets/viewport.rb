@@ -47,6 +47,13 @@ class ViewportWidget
       (@y..(@y+@height-1)).each do |y|
         tile = @world.at(@rx+dx, @ry+dy)
         tile = { :char => '?', :color => :red } unless tile
+
+        if tile.respond_to?(:has?)
+          symbol = tile.get(:symbol).symbol
+          symbol[:walkable] = tile.get(:walkable).walkable
+          tile = symbol
+        end
+
         display.draw x, y, tile[:char], tile[:color]
         dy += 1
       end
