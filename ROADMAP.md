@@ -19,17 +19,26 @@ Roadmap
 * Twitter post
 * Make it work with both Ruby 1.9.3 and 2.x
 
-**v0.0.7**
+**v0.0.8**
 
 * Speed Scheduler
-* Use engine in game gen
 * Travis CI builds
 * fix bug when rogue generator renders on large terminal
 * Name generator
   - Fantasy
   - SciFi
+
+**v0.0.7** (Initial release)
+
+* Use engine in game gen
+* Render spaces with default color rather than red question marks if unknown tile
 * Command line takes params
   * delve mygame -g dungeon -r curses -s scheduler
+* Base FieldOfView class [DONE]
+* Discrete shadowcasting FoV class
+* Base Path class
+* A* Pathing class
+* Make move/collision component return the item that was in the collision
 
 ========================================================================
 
