@@ -1,7 +1,7 @@
 Gem::Specification.new do |g|
   g.name        = 'delve'
-  g.version     = '0.0.6'
-  g.date        = '2014-02-25'
+  g.version     = '0.0.7'
+  g.date        = '2014-03-24'
   g.summary     = 'Roguelike library inspired by rot.js and libtcod'
   g.description = 'Roguelike library inspired by rot.js and libtcod'
   g.authors     = ['Benny Hallett']
