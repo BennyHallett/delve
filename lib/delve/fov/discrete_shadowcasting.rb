@@ -56,9 +56,23 @@ class DiscreteShadowCasting < FieldOfView
     count = 0
 
       if index % 2 == 0
-        #TODO: Begin again here!
-      end
+        while index < data.length and data[index] < b
+          index += 1
+          count += 1
+        end
 
+        return false if count == 0
+
+        if blocks
+          if count % 2 == 0
+            #TODO Splice needs to be rubified
+            data.splice index-count, count, b
+          else
+            data.splice index-count, count
+          end
+        end
+      end
+    return true
   end
 
 end
