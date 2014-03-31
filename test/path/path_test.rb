@@ -29,4 +29,13 @@ class PathTest < Minitest::Test
     end
   end
 
+  def test_initialize_fails_if_free_checker_doesnt_respond_to_free?
+    checker = mock('object')
+    checker.expects(:respond_to?).with(:free?).returns(false)
+
+    assert_raises RuntimeError do
+      Path.new @toy, @tox, checker
+    end
+  end
+
 end

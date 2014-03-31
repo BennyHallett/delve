@@ -4,6 +4,7 @@ class Path
     raise 'Cannot initialize path if to_x is nil' if to_x.nil?
     raise 'Cannot initialize path if to_y is nil' if to_y.nil?
     raise 'Cannot initialize path if free checker is nil' if free_checker.nil?
+    raise 'Cannot initialize path if free checker does not respond to #free?' unless free_checker.respond_to? :free?
   end
 
 end
