@@ -46,7 +46,26 @@ class AStar < Path
 
   private
   def add(x, y, prev)
-    #TODO: Up to here
+    obj = {
+      x: x,
+      y: y,
+      prev: prev,
+      g: (prev ? prev.g+1 : 0),
+      h: distance(x, y)
+    }
+
+    @done["#{x},#{y}"] = obj
+
+    f = obj[:g] + obj[:h]
+    (0..@todo.length-1).each do |i|
+      item = @todo[i]
+      if f < item[:g] + item[:h]
+        @todo.splice(i, 0, obj)
+        return
+      end
+    end
+
+    @todo << obj
   end
 
 end
