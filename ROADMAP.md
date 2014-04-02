@@ -36,8 +36,8 @@ Roadmap
   * delve mygame -g dungeon -r curses -s scheduler
 * Base FieldOfView class [DONE]
 * Discrete shadowcasting FoV class
-* Base Path class
-* A* Pathing class
+* Base Path class [DONE]
+* A* Pathing class [DONE]
 * Make move/collision component return the item that was in the collision
 
 ========================================================================
