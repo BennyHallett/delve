@@ -22,8 +22,8 @@ class AStar < Path
 
     while @todo.length > 0
       item = @todo.shift
-      break if item.x == from_x and item.y = from_y
-      neighbours = get_neighbours item.x, item.y
+      break if item[:x] == from_x and item[:y] == from_y
+      neighbours = get_neighbours item[:x], item[:y]
 
       (0..neighbours.length-1).each do |i|
         neighbour = neighbours[i]
@@ -39,8 +39,8 @@ class AStar < Path
     return nil if item.nil?
 
     until item.nil?
-      yield item.x, item.y
-      item = item.prev
+      yield item[:x], item[:y]
+      item = item[:prev]
     end
   end
 
@@ -50,7 +50,7 @@ class AStar < Path
       x: x,
       y: y,
       prev: prev,
-      g: (prev ? prev.g+1 : 0),
+      g: (prev ? prev[:g]+1 : 0),
       h: distance(x, y)
     }
 
@@ -60,12 +60,24 @@ class AStar < Path
     (0..@todo.length-1).each do |i|
       item = @todo[i]
       if f < item[:g] + item[:h]
-        @todo.splice(i, 0, obj)
+        @todo.insert(i, obj)
         return
       end
     end
 
     @todo << obj
+  end
+
+  def distance(x, y)
+    if [:four, :eight].include? @options[:topology]
+      return (x - @from_x).abs + (y - @from_y).abs
+    end
+
+    if @options[:topology] == :six
+      dx = (x - @from_x).abs
+      dy = (y - @from_y).abs
+      dy + [0, ((dx-dy)/2)].max
+    end
   end
 
 end
