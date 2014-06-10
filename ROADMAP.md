@@ -19,7 +19,7 @@ Roadmap
 * Twitter post
 * Make it work with both Ruby 1.9.3 and 2.x
 
-**v0.0.8**
+**v0.0.9**
 
 * Speed Scheduler
 * Travis CI builds
@@ -28,19 +28,22 @@ Roadmap
   - Fantasy
   - SciFi
 
-**v0.0.7** (Initial release)
+**v0.0.8**
 
 * Use engine in game gen
 * Render spaces with default color rather than red question marks if unknown tile
 * Command line takes params
   * delve mygame -g dungeon -r curses -s scheduler
-* Base FieldOfView class [DONE]
 * Discrete shadowcasting FoV class
-* Base Path class [DONE]
-* A* Pathing class [DONE]
 * Make move/collision component return the item that was in the collision
 
 ========================================================================
+
+**v0.0.7** (Released version)
+
+* Base FieldOfView class [DONE]
+* Base Path class [DONE]
+* A* Pathing class [DONE]
 
 **v0.0.6**
 
