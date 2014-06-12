@@ -50,7 +50,7 @@ class World
     rx = (rand * @width).floor
     ry = (rand * @height).floor
 
-    while !free(rx, ry)
+    while !free?(rx, ry)
       rx = (rand * @width).floor
       ry = (rand * @height).floor
     end
