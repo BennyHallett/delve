@@ -26,21 +26,15 @@ class LoadingScreen
   def update(input)
     @world = World.new(<%= @new_generator %>)
     @player = @player_factory.create @world
+    randomize_location @player
     @manager.push_screen GameScreen.new(@world, @player, @manager)
     false
   end
 
   private
-  def randomize_player_location
-    rx = (rand * @world.width).floor
-    ry = (rand * @world.height).floor
-
-    while !@world.free?(rx, ry)
-      rx = (rand * @world.width).floor
-      ry = (rand * @world.height).floor
-    end
-
-    @player.get(:position).set(rx, ry)
+  def randomize_location(thing)
+    pos = @world.random_free_location
+    thing.get(:position).set(pos[:x], pos[:y])
   end
 
 end
