@@ -42,7 +42,8 @@ class World
   end
 
   def free?(x, y)
-    at(x, y)[:walkable]
+    item = at(x, y)
+    !item.nil? and item[:walkable]
   end
 
   private
