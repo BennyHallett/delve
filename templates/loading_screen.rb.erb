@@ -35,7 +35,7 @@ class LoadingScreen
     rx = (rand * @world.width).floor
     ry = (rand * @world.height).floor
 
-    while !@world.free(rx, ry)
+    while !@world.free?(rx, ry)
       rx = (rand * @world.width).floor
       ry = (rand * @world.height).floor
     end

@@ -12,6 +12,6 @@ class CollisionComponent
   end
 
   def free?(x, y)
-    @detector.free(x, y)
+    @detector.free?(x, y)
   end
 end
