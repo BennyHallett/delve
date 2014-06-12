@@ -1,8 +1,8 @@
 PATH
   remote: .
   specs:
-    delve (0.0.7)
-      perlin_noise
+    delve (0.0.8)
+      perlin_noise (= 0.1.2)
 
 GEM
   remote: https://rubygems.org/
@@ -19,6 +19,6 @@ PLATFORMS
 
 DEPENDENCIES
   delve!
-  minitest
-  mocha
-  rake
+  minitest (= 5.2.2)
+  mocha (= 1.0.0)
+  rake (= 10.1.1)

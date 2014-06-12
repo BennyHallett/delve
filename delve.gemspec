@@ -1,6 +1,8 @@
+require File.expand_path('./lib/delve/version', File.dirname(__FILE__))
+
 Gem::Specification.new do |g|
   g.name        = 'delve'
-  g.version     = '0.0.7'
+  g.version     = Delve.version
   g.date        = '2014-03-24'
   g.summary     = 'Roguelike library inspired by rot.js and libtcod'
   g.description = 'Roguelike library inspired by rot.js and libtcod. Allows developers to get a jumpstart on their roguelike development, by running a single command to get started with an "@ walking around the world" demo.'

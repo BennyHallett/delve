@@ -1,15 +1,43 @@
 #!/usr/bin/env ruby
 
 require 'delve'
+require 'delve/version'
+require 'optparse'
 
-name = ARGV.shift
+options = Hash.new
+banner = "
 
-if name.nil?
-  puts "Cannot create roguelike without a name"
+===========
+   Delve
+===========
+
+"
+
+OptionParser.new do |opts|
+  opts.banner = banner
+
+  opts.on '-n', '--name NAME', 'Name of your new roguelike' do |n|
+    options[:name] = n
+  end
+
+  opts.on '-v', '--version', 'Display the current version' do |v|
+    options[:version] = true
+  end
+end.parse!
+
+if options[:version]
+  puts "Delve v#{Delve.version}"
   exit 1
 end
 
-dir = File.expand_path('.').to_s
+errors = []
+errors << 'Cannot create roguelike without a name' unless options.include? :name
 
-delve = Delve.new name
+errors.each do |err|
+  puts "* #{err}\n"
+end
+exit 1 if errors.length > 0
+
+dir = File.expand_path('.').to_s
+delve = Delve.new options[:name]
 delve.create_game dir
