@@ -17,7 +17,7 @@ Delve allows you to bootstrap your roguelike, with a simple game that includes a
 
 To generate your Roguelike, run
 
-    $ delve -n my-roguelike
+    $ delve -n dungeondude
 
 You can also see the current installed version of delve by running
 
